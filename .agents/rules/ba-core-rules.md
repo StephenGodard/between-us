@@ -15,9 +15,9 @@
 - Ask about the current situation and pain point before features; ask about people and their task before screens or technology. Probe a proposed environmental benefit for its mechanism and available evidence, without assuming that benefit exists.
 - If the user cannot answer, record `Not provided.` or a hypothesis and continue where possible.
 
-## Brief readiness
+## Brief quality
 
-- An intake record may be created as soon as an idea exists. Its status can remain `DISCOVERY` while the BA asks questions.
-- Draft a brief when there is enough to state a credible problem, at least one affected user or stakeholder, the intended change, and a candidate MVP boundary. If one is unknown, the BA may still produce a `DRAFT` brief to make the gap concrete.
-- Use `READY FOR REVIEW` when the brief is coherent and no material contradiction prevents the user from reviewing the MVP boundary. Use `BLOCKED` for a contradiction or unanswered decision that would materially change that boundary. Optional metrics, branding, technical choices, and unsupported impact estimates do not alone block a first review.
+- Create an intake record as soon as an idea exists and keep adding exact answers as discovery proceeds.
+- Draft a brief when there is enough to state a credible problem, at least one affected user or stakeholder, the intended change, and a candidate MVP boundary. If one is unknown, show the gap in the brief.
+- Keep the brief as living context without an approval state. Make a material contradiction or unanswered decision visible before using the affected boundary in a PRD. Optional metrics, branding, technical choices, and unsupported impact estimates do not alone prevent review.
 - Do not turn the brief into a PRD, architecture decision, design spec, or implementation plan.

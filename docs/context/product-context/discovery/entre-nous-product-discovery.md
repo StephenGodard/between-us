@@ -1,13 +1,13 @@
 # Entre nous — Product Discovery
 
-**Status:** Ready for review; the document as a whole has not been approved  
+**Mode:** Living product context; hypotheses and open decisions remain labeled
 **Date:** 24 October 2026  
 **Name:** “Entre nous” is a working name taken from the exploratory prototype; the final name has not been chosen.  
 **Notion copy:** [Entre nous — Product Discovery](https://app.notion.com/p/40332705124c81de9b82fbad881f7ce9).  
 **Structure reference:** [Animesphere.io — Product Discovery](https://animesphere.notion.site/Animesphere-io-Product-Discovery-1bb32705124c8056bc3ff23392ebcf20).  
 **Primary sources:** [intake](../intake/espaces-ecoute-ephemeres.md) for the user's product decisions and the [supplied hackathon PDF](../../DevDay-Paris-Hackathon-Kickoff.pdf) for event constraints. Answer IDs refer to the user's exact words in the intake; the [event summary](../../hackathon-kickoff.md) is a reading aid. The [BA brief](../briefs/espaces-ecoute-ephemeres.md) is a related draft, not an independent source for this discovery. A-14 places this discovery before development decisions.
 
-> **Working vision.** Help someone going through a difficult time and feeling isolated find an initial listening ear in another citizen. Each conversation has a beginning and an end, with no relationship to maintain afterward. The idea that “we can all be there for someone” is central, without assigning anyone a permanent “victim” or “helper” identity (A-1, A-2, A-5, A-6, A-11). This English rendering of the user's phrase “on est tous aidants” is a translation, not an approved tagline.
+> **Working vision.** Help someone going through a difficult time and feeling isolated find an initial listening ear in another citizen. Each conversation has a beginning and an end, with no relationship to maintain afterward. The idea that “we can all be there for someone” is central, without assigning anyone a permanent “victim” or “helper” identity (A-1, A-2, A-5, A-6, A-11). This English rendering of the user's phrase “on est tous aidants” is a translation, not a selected tagline.
 
 ## Project overview
 
@@ -15,7 +15,7 @@ The proposed service is a space for **citizens to listen to one another**, initi
 
 **Origin of the idea:** The project owner has seen isolated people struggle with difficult emotions and observed that listening to them could help them move forward (A-1). They believe some people keep their difficulties to themselves because they hesitate to approach a psychologist or another healthcare professional (A-1, A-6). These observations motivate the idea; they do not establish that a platform would have the same effect.
 
-**Confirmed hackathon scope:** A locally testable mini-prototype with two fictional participants, sample conversations, two-way chat and a real local audio call, plus a scripted two-minute video. The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13; kickoff video requirement).
+**Confirmed hackathon scope:** A locally testable mini-prototype with two fictional participants on distinct devices sharing one LAN, sample conversations, two-way chat and a real audio call, plus a scripted two-minute video. The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13, A-22, A-23; kickoff video requirement).
 
 ## Who it is for 👤
 
@@ -120,4 +120,4 @@ A participant should be able to report a hurtful message; human review and admin
 - [Hackathon constraints](../../hackathon-kickoff.md)
 - [Exploratory prototype instructions](../../../../prototype/README.md)
 
-**Next BA review:** Review this discovery with the owner and confirm the main story, the wording of the two intentions and the exact promise. These decisions come before revising the prototype and writing the storyboard. The document must not be marked `APPROVED` without explicit approval.
+**Next BA review:** Confirm the main story, the wording of the two intentions and the exact promise with the owner. Keep this living context updated as those decisions are made.

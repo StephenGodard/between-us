@@ -1,38 +1,41 @@
-# Architecture decision: web demo infrastructure
+# Architecture decision: two-device web demo infrastructure
 
-Status: PROPOSED  
-Date: 2026-10-24  
-Delivery scope: fictional local hackathon demonstration  
-Functional sources: `docs/context/product-context/discovery/entre-nous-product-discovery.md` — Ready for review; `docs/context/product-context/briefs/espaces-ecoute-ephemeres.md` — READY FOR REVIEW; `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` — DISCOVERY (A-12, A-13, A-18, A-19).  
+Status: PROPOSED
+Date: 2026-10-24
+Delivery scope: fictional hackathon demonstration on two devices on the same local network
+Functional sources: `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` (A-8, A-10 to A-13, A-18 to A-23); living `docs/context/product-context/discovery/entre-nous-product-discovery.md` and `docs/context/product-context/briefs/espaces-ecoute-ephemeres.md`.
 Technical context: `docs/context/technical-context/technical-context.md`
 
 ## Decision needed
 
-The user selected a web application for the hackathon and prefers Vue/Nuxt (A-19). Decide how much Nuxt infrastructure this fictional, local two-participant demo needs before the submission deadline. The event requires a two-minute video; a project link is optional (`docs/context/hackathon-kickoff.md`).
+Choose a frontend/backend shape that demonstrates fictional two-way chat and a real audio call between two devices on one local network, using a backend the owner can maintain. The owner's previous web direction and Vue/Nuxt preference remain. This revision replaces the earlier static, browser-only recommendation because two tabs on one device no longer satisfy the requested scope.
 
 ## Constraints and decision criteria
 
-- The demo must show fictional participants, two-way chat, a real local audio call, and participant-facing closure without stored conversation history (A-8, A-10, A-12, A-13).
-- The current `prototype/` already contains a same-browser, two-tab implementation; its behaviour still needs rehearsal and parity checks after any migration (`prototype/README.md`, `prototype/app.js`).
-- No real-user operation, remote matching, administrator archive, or moderation workflow is in the hackathon scope (A-8, A-10 to A-13).
-- A browser microphone requires a secure context such as localhost or HTTPS and user permission ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)). `BroadcastChannel` communicates between compatible same-origin browsing contexts, not remote devices ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API)).
+- The demo must show fictional participants, sample messages, two-way chat, a real audio call and closure in both views, without a saved conversation history (A-8, A-10 to A-13).
+- The owner ranks backend competence .NET, Python, TypeScript/Node, Java, PHP, strongest to weakest, and specifies two devices on the same LAN (24 October 2026 answers).
+- The current `prototype/` uses same-browser `BroadcastChannel` and cannot connect two devices (`prototype/README.md`, `prototype/app.js`; [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API)).
+- Browser microphone access needs a secure context and permission; a plain HTTP LAN address is insufficient for the second device ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)). [WebRTC call setup needs signaling](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling); LAN media connectivity still requires testing.
+- The two-minute pitch deadline favors a repeatable, locally controlled path ([event summary](../context/hackathon-kickoff.md)). No throughput or production availability target is provided.
 
 ## Options considered
 
 | Option | Fit with needs | Tradeoffs | Evidence / unknowns |
 | --- | --- | --- | --- |
-| Keep the current plain web prototype | Preserves an existing local journey and avoids migration work before the deadline. | Does not follow the expressed Vue/Nuxt preference; design and behaviour still need verification. | `prototype/README.md`, `prototype/app.js`; actual rehearsal NOT RUN. |
-| Client-rendered Nuxt with static output | Follows Vue/Nuxt preference; the demo can run in the browser with no application backend. Nuxt supports client-side rendering and static generation ([Nuxt rendering](https://learn.nuxt.com/en/concepts/rendering-modes), [Nuxt static hosting](https://content.nuxt.com/docs/deploy/static)). | Migration can regress chat/audio/closure. Keep the existing prototype runnable until parity is demonstrated. | A-19 and current prototype; no Nuxt implementation yet. |
-| Nuxt server runtime plus database | Could support future server features. | Adds setup and operational work without a confirmed demo need; archives and real-user rules are deferred. | A-11, A-12; future scope unresolved. |
+| Nuxt frontend + small C#/ASP.NET Core backend with SignalR | Aligns with preferred UI and strongest backend skill; [SignalR](https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction) supports chat-like client messages and groups, so it can relay chat and WebRTC signaling. | Two processes and a browser-accessible, secure LAN setup. SignalR does not carry the WebRTC audio stream. | Requires a two-device end-to-end test, including HTTPS/trusted origin and call teardown. |
+| Nuxt frontend + Python/FastAPI backend | Fits the second strongest backend skill; [FastAPI supports WebSockets](https://fastapi.tiangolo.com/advanced/websockets/). | Separate runtime and a custom realtime message protocol; same LAN/secure-origin test. | Reasonable fallback if the owner prefers Python or .NET setup proves unsuitable. |
+| Nuxt frontend + TypeScript backend or Nuxt server API | One language can cover browser and backend; [Nuxt has server routes](https://nuxt.com/docs/guide/concepts/server-engine). | Owner ranks TypeScript/Node third. Realtime server support and deployment need checking for the chosen Nuxt runtime. | Revisit if one runtime matters more than owner familiarity. |
+| Existing static two-tab prototype | Already illustrates the fictional journey on one computer. | Cannot meet the distinct-device requirement. | Observed in `prototype/README.md` and `prototype/app.js`; use only as a journey reference. |
 
 ## Decision and rationale
 
-**Recommendation pending artifact approval:** Build the demo as a client-rendered Nuxt application that produces static assets. Keep fictional scenarios and session state in browser memory; reuse and verify the existing two-tab chat/audio approach. Run locally for filming. If a public project link is useful, serve the static output over HTTPS; [Cloudflare Pages supports Nuxt deployment](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/), but no hosting provider has been selected or connected. Do not add an application backend or database for this demo.
+**Provisional recommendation, pending approval of this ADR:** Build a Nuxt web frontend and a small, separate C#/ASP.NET Core backend. Use SignalR to create/join a temporary two-person session and relay chat, WebRTC signaling and closure. Use WebRTC in the browsers for audio. Keep sample content fictional and conversation messages out of persistent storage. No account, archive, moderation or emergency feature is selected for this demo.
 
-The user has approved the **web direction** (A-19), not this exact infrastructure proposal. This ADR remains `PROPOSED`.
+This choice follows the owner's backend proficiency and the new two-device LAN requirement. Frontend rendering mode, exact .NET/Nuxt versions, secure LAN access, session expiry and logging behavior still need design and verification. The user approved neither this exact ADR nor the earlier infrastructure recommendation; status remains `PROPOSED`.
 
 ## Consequences and review trigger
 
-- A public URL would allow viewing the demo but would not connect two participants on separate devices using the current `BroadcastChannel` design.
-- The original `prototype/` remains a fallback until the Nuxt version passes the same local journey, including microphone permission, call, and closure in both tabs.
-- Revisit this decision if the user requires a live cross-device call, public participation, accounts, stored data, or operational safety features; those needs would change the architecture and require an approved PRD.
+- Design a trusted, secure browser origin reachable by both devices before claiming microphone support. Verify the complete Nuxt-to-backend connection on the actual LAN and browsers.
+- Define a two-person session contract, message and signaling events, closure/disconnect behavior, and what server logs or memory retain. Test both views and confirm no conversation archive is created.
+- Validate WebRTC audio and teardown on two distinct devices; LAN proximity alone is not a proof of connectivity. Any relay or network service is a later decision based on the test.
+- Revisit if the demo must work across different networks, be publicly accessible, use real participants, or retain reports/history. Those changes affect hosting, safety, data and the approved scope.

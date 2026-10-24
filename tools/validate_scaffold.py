@@ -45,10 +45,10 @@ if (ROOT / "archive").exists():
 
 roles = sorted((AGENTS / "agents").glob("*-agent.md"))
 skills = sorted((AGENTS / "skills").glob("*/SKILL.md"))
-if {p.stem for p in roles} != {"ba-agent", "po-agent", "architect-agent"}:
-    errors.append("active roles differ from BA, PO, architect")
-if {p.parent.name for p in skills} != {"scaffold-project", "create-prd", "shape-architecture"}:
-    errors.append("active skills differ from discovery, PRD, architecture")
+if {p.stem for p in roles} != {"ba-agent", "po-agent", "architect-agent", "build-in-public-agent"}:
+    errors.append("active roles differ from BA, PO, architect, Build in Public")
+if {p.parent.name for p in skills} != {"scaffold-project", "create-prd", "create-features", "shape-architecture", "share-progress"}:
+    errors.append("active skills differ from discovery, PRD, features, architecture, Build in Public")
 
 for path, expected in [(p, p.stem) for p in roles] + [(p, p.parent.name) for p in skills]:
     content = path.read_text(encoding="utf-8")

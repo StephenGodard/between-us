@@ -1,9 +1,9 @@
 # Project discovery intake: short-lived listening spaces (working title)
 
-Status: DISCOVERY
+Mode: Living intake record
 Started: 2026-10-24
 
-The French request and A-1 to A-19 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
+The French request and A-1 to A-23 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
 
 ## Original request
 
@@ -73,6 +73,10 @@ Relevant event constraints: The user says they selected the Impact and “public
 | F-40 | The user wants an architect agent to guide choices from functional context and begin a reusable technical context. A mobile app is a candidate, not a selected platform. | Answer A-17 |
 | F-41 | The user chooses the hackathon demonstration as the immediate architecture focus, with a possible redesign later. Winning the event is the goal, not an established outcome. | Answer A-18 |
 | F-42 | The user selects a web application for the hackathon and prefers the Vue/Nuxt ecosystem. Hosting and the rest of the infrastructure remain open for recommendation. | Answer A-19 |
+| F-43 | The user wants a frontend and backend, prefers Vue/Nuxt for the frontend, and wants backend technology suited to their skills and functional context. | Answer A-20 |
+| F-44 | The user ranks backend skills .NET, Python, TypeScript/Node, Java, PHP from strongest to weakest. | Answer A-21 |
+| F-45 | The hackathon demonstration must work on two distinct devices. | Answer A-22 |
+| F-46 | Those devices will share one local network. | Answer A-23 |
 
 ## Hypotheses to test
 
@@ -235,6 +239,38 @@ Vers la démo du hackaton je pense, le but est de gagner on pourra faire une ref
 Ok go pour partir sur du web alors, quel infrastructure tu me conseilles ? Je préfère l'écosystème vue/nuxt
 ```
 
+### A-20 — User engineering-context request, verbatim
+
+```text
+/goal peux-tu m'aider à charger mon contexte d'ingenierie ?
+
+@docs/context/technical-context/
+
+Niveau stack ce sera un back et front et je compte utiliser vue/nuxt pour le front end et back-end je sais pas encore, un langage léger qui sera adapté à mon contexte et dans lequel j'ai des compétences
+
+au niveau contraintes technique on va déterminer ca via le coté fonctionnel qu'on a bien documenter,
+
+Objectif : Construire le context d'ingenierie qui nous permettra de construire l'application
+```
+
+### A-21 — User backend-skill answer, verbatim
+
+```text
+.net, Python, Typescript/Node, Java, PHP (-> dans l'ordre de ce que je maitrise le plus à ce que je maitrise le moins bien)
+```
+
+### A-22 — User device answer, verbatim
+
+```text
+Deux appareils distincts
+```
+
+### A-23 — User network answer, verbatim
+
+```text
+Même réseau local
+```
+
 ## Decisions made by the user
 
 - The user says they selected “impact et public” at registration and confirms “public” means Build in Public; they have posted the Product Discovery on X for that track (A-16). The exact individual post URL was not supplied.
@@ -262,6 +298,8 @@ Ok go pour partir sur du web alors, quel infrastructure tu me conseilles ? Je pr
 - The user requests an architect agent and an initial technical context to guide later agents (A-17). A mobile app is a suggestion to evaluate, not a platform decision.
 - The user chooses the hackathon demo as the immediate architecture focus and accepts a later redesign (A-18). This does not select a mobile or web platform.
 - The user selects a web application for the hackathon and expresses a Vue/Nuxt preference (A-19). The deployment provider, rendering mode, and any backend remain architecture decisions to review.
+- The user asks for a frontend and backend, with the backend chosen to suit the functional context and their skills (A-20); they rank .NET, Python, TypeScript/Node, Java, PHP from strongest to weakest (A-21).
+- The hackathon demonstration must work on two distinct devices sharing one local network (A-22; A-23). The existing same-browser prototype does not meet this later requirement.
 
 ## Remaining unknowns
 
@@ -276,8 +314,8 @@ Ok go pour partir sur du web alors, quel infrastructure tu me conseilles ? Je pr
 - The exact French/EU legal classifications and operational responsibilities identified in `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md`, which depend on the final service and first-user scope.
 - How to fit the user's proposed two-to-five-minute video concept into the required two-minute submission pitch (`docs/context/DevDay-Paris-Hackathon-Kickoff.pdf`, p. 6).
 - The call is confirmed as audio for the local prototype (A-13). A-10 links the end of the call to the disappearance of the exchange; “tout s'efface” needs to be shown as participant-visible disappearance. A-12 adds no storage in the demo, while A-5 separately requires administrator archives for a future real service.
-- The hackathon application will be web based (A-19). Whether the filmed view must resemble a phone, whether a public demo link is useful, and the target devices and distribution method for a later real service are Not provided. The earlier mobile idea (A-17) remains a possible later direction after the demo-first decision (A-18).
+- The hackathon application will be web based (A-19) and demonstrated on two devices on one LAN (A-22; A-23). Whether the filmed view must resemble a phone, whether a public demo link is useful, and the target devices and distribution method for a later real service are Not provided. The earlier mobile idea (A-17) remains a possible later direction after the demo-first decision (A-18).
 
-## Brief readiness
+## Brief basis
 
-The user has clarified the central problem and intended change: accessible first emotional support for people who keep problems to themselves and hesitate to seek professional help. The hackathon demonstration uses fictional exchanges and shows chat activation, messages, and an ephemeral call; real-user interactions are deferred. For the envisioned real service, closed conversations disappear for participants while administrator archive rules still require review. These anchors support a reviewable business brief. Archive access and duration, identity, safety response, and value evidence remain open decisions, not grounds to claim demonstrated benefit.
+The user has clarified the central problem and intended change: accessible first emotional support for people who keep problems to themselves and hesitate to seek professional help. The hackathon demonstration uses fictional exchanges and shows chat activation, messages, and an ephemeral call on two LAN devices; real-user interactions are deferred. For the envisioned real service, closed conversations disappear for participants while administrator archive rules still require review. These anchors support the living business brief. Archive access and duration, identity, safety response, and value evidence remain open decisions, not grounds to claim demonstrated benefit.

@@ -1,6 +1,6 @@
 # Architecture checklist
 
-- [ ] The technical context names exact functional sources, their statuses, and the delivery scope.
+- [ ] The technical context names exact functional sources, their material decisions and gaps, and the delivery scope.
 - [ ] User needs, observed code, hypotheses, and approved decisions are distinguishable and cited.
 - [ ] The local fictional demo and future real-person service are not conflated.
 - [ ] Candidate options are compared against sourced needs and material tradeoffs; no stack or platform is silently inherited from the prototype.

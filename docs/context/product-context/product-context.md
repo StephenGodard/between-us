@@ -1,6 +1,6 @@
 # Product context — short-lived listening between citizens
 
-**Status:** Working summary, 24 October 2026. The demonstration scope is confirmed. The [Product Discovery](discovery/entre-nous-product-discovery.md) and [BA brief](briefs/espaces-ecoute-ephemeres.md) have not been approved as a whole. “Entre nous” is an unapproved working name.
+**Updated:** 24 October 2026. This is living scaffolding; the demonstration scope is confirmed, while the [Product Discovery](discovery/entre-nous-product-discovery.md) and [BA brief](briefs/espaces-ecoute-ephemeres.md) retain labeled hypotheses and gaps. “Entre nous” is a working name, not a selected final name.
 
 **Purpose:** Give agents the context needed before working on the project. This summary points to sources; it does not replace the user's [exact words](intake/espaces-ecoute-ephemeres.md) or the detailed discovery. A-n IDs refer to answers in the intake.
 
@@ -33,13 +33,13 @@ The demonstration uses **fictional, acted exchanges only** (A-8, A-10). It has t
 
 The idea to make visible is that a human conversation can begin quickly and that “on est tous aidants” (A-11). The current [`prototype/`](../../../prototype/README.md) was begun before discovery; its behaviour and interface are exploratory, not validated product decisions (A-14).
 
-The user now prioritizes architecture work for the **hackathon demonstration**, aiming to win the event, and accepts a later redesign (A-18). They choose a **web application** for this demo and prefer Vue/Nuxt (A-19). This does not approve the existing prototype or select hosting, rendering mode, or a backend.
+The user now prioritizes architecture work for the **hackathon demonstration**, aiming to win the event, and accepts a later redesign (A-18). They choose a **web application** for this demo and prefer Vue/Nuxt (A-19). They add a frontend and backend (A-20), rank backend skills .NET, Python, TypeScript/Node, Java, PHP (A-21), and require two devices on the same LAN (A-22, A-23). The existing prototype does not select hosting, rendering mode, or a backend.
 
 **Outside this demo:** Matching real people in distress, a public service, administrator archives, operational moderation, actual emergency calls and proof of an effect on mental health (A-8, A-10 to A-13). Local disappearance of messages illustrates a session ending; it does not define retention policy for a future service.
 
 ## Later phase: conditions before real exchanges
 
-For a future real service, the owner wants administrators to retain reported content and conversation history while participants lose access after closure (A-5). They explicitly deferred this policy until after the hackathon (A-11). Before a pilot with real people, decisions and specialist review are needed on participant information, access and retention, reports and moderation, urgent distress, possible emergency contact, listeners' responsibilities, and how to measure both benefits **and harms** (A-4, A-5; [preliminary research](research/securite-confidentialite-ecoute-citoyenne.md)). None of these rules has been approved or implemented for real use.
+For a future real service, the owner wants administrators to retain reported content and conversation history while participants lose access after closure (A-5). They explicitly deferred this policy until after the hackathon (A-11). Before a pilot with real people, decisions and specialist review are needed on participant information, access and retention, reports and moderation, urgent distress, possible emergency contact, listeners' responsibilities, and how to measure both benefits **and harms** (A-4, A-5; [preliminary research](research/securite-confidentialite-ecoute-citoyenne.md)). These rules remain undefined and unimplemented for real use.
 
 ## Hypotheses and open questions
 

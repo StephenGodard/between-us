@@ -1,6 +1,5 @@
 # Business brief: {{working_title}}
 
-Status: {{DRAFT | BLOCKED | READY FOR REVIEW | APPROVED}}
 Date: {{date}}
 Source intake: {{exact_path}}
 Additional sources: {{exact paths or None.}}

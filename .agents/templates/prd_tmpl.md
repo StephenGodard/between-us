@@ -2,8 +2,8 @@
 
 Status: {{DRAFT | BLOCKED | READY FOR REVIEW | APPROVED}}
 Date: {{date}}
-Source discovery: {{exact_path}} — {{status}}
-Source BA brief: {{exact_path}} — {{status}}
+Source discovery: {{exact_path and material open questions}}
+Source BA brief: {{exact_path and material open questions}}
 Additional evidence: {{intake answer IDs and exact paths, or None.}}
 Build readiness: {{Not ready | Ready; give reason and unresolved blockers}}
 

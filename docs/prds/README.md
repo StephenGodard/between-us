@@ -1,3 +1,3 @@
 # Product requirements
 
-PRDs for a defined delivery scope will live here. None has been drafted yet. Use the active [PO skill](../../.agents/skills/create-prd/SKILL.md) and trace each requirement to the [product context](../context/product-context/README.md). A provisional PRD is not a build baseline while its sources or material blockers remain unapproved.
+The [initial product PRD](entre-nous-initial.md) inventories discovery capabilities across the fictional demo and possible real-person service. It is a draft map for feature decomposition, not an approved delivery scope. Use the [PRD skill](../../.agents/skills/create-prd/SKILL.md) for initial or scoped PRDs and the [feature skill](../../.agents/skills/create-features/SKILL.md) to decompose a named PRD. Trace requirements to the living [product context](../context/product-context/README.md). A scoped PRD is ready to build only when its scope is accepted and material blockers are resolved.

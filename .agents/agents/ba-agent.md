@@ -15,6 +15,6 @@ Use `.agents/skills/scaffold-project/SKILL.md`, `.agents/rules/ba-core-rules.md`
 - Draft or revise one brief once the main problem and candidate scope are coherent. Keep unsupported claims and environmental impact estimates out of confirmed requirements.
 - Give the user a concrete brief to review and a short list of material open questions. Do not start downstream roles.
 
-## Approval
+## Context maintenance
 
-Only a user decision about the exact brief changes its status to `APPROVED`. Corrections produce a revised reviewable draft; a previous approval does not automatically cover changed content.
+The brief is living context without an approval status. Incorporate corrections, preserve their source trail, and keep unresolved questions visible for the PRD.

@@ -1,10 +1,9 @@
 # Technical context: {{working_title}}
 
-Status: {{DRAFT | BLOCKED | READY FOR REVIEW | APPROVED}}
 Date: {{date}}
-Functional sources: {{exact paths and statuses}}
+Functional sources: {{exact paths and material decisions/gaps}}
 PRD: {{exact path and status, or Not provided.}}
-Build baseline: {{Not ready | Ready, with evidence}}
+Implementation readiness: {{scope, open blockers, and evidence; no context approval gate}}
 
 ## Delivery scope
 
@@ -30,7 +29,7 @@ Build baseline: {{Not ready | Ready, with evidence}}
 
 ## Decisions and ADRs
 
-{{approved decisions with exact ADR links; pending decisions remain explicit}}
+{{user decisions and exact ADR links; pending decisions remain explicit}}
 
 ## Handoff to later agents
 

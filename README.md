@@ -13,7 +13,7 @@ This repository explores an initial listening exchange between citizens. The con
 | Future implementation | Code for a chosen delivery scope, once designed | [Source boundary](src/README.md) |
 | Validation | Future solution tests and current repository checks | [Tests](tests/README.md) and [tools](tools/README.md) |
 
-The [document index](docs/README.md) separates functional sources, technical context, ADRs, and future PRDs. The current [web demo infrastructure ADR](docs/adr/0001-web-demo-infrastructure.md) is **PROPOSED**. `prototype/` is not an approved product or architecture baseline. No production source or solution tests have been scaffolded yet.
+The [document index](docs/README.md) separates living functional and technical context, ADRs, and future PRDs. The current [web demo infrastructure ADR](docs/adr/0001-web-demo-infrastructure.md) is **PROPOSED**. `prototype/` is exploratory code, not the selected product or architecture baseline. No production source or solution tests have been scaffolded yet.
 
 ## Try the exploratory prototype
 

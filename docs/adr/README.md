@@ -4,6 +4,6 @@ ADRs document material technical choices individually. Each record states its sc
 
 | ADR | Status | Scope |
 | --- | --- | --- |
-| [0001 — Web demo infrastructure](0001-web-demo-infrastructure.md) | `PROPOSED` | Fictional local hackathon demonstration |
+| [0001 — Two-device web demo infrastructure](0001-web-demo-infrastructure.md) | `PROPOSED` | Fictional hackathon demonstration on two LAN devices |
 
-The user's web direction and Vue/Nuxt preference do not approve ADR 0001's rendering, hosting or backend recommendation. `APPROVED` requires explicit approval of that exact ADR.
+The user's web direction, Vue/Nuxt preference, frontend/backend request and two-device scope do not approve ADR 0001's specific Nuxt, ASP.NET Core/SignalR, hosting or audio plan. `APPROVED` requires explicit approval of that exact ADR.

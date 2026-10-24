@@ -3,7 +3,7 @@
 Status: {{PROPOSED | APPROVED | SUPERSEDED}}
 Date: {{date}}
 Delivery scope: {{scope}}
-Functional sources: {{exact paths and statuses}}
+Functional sources: {{exact paths, material decisions and gaps}}
 Technical context: `docs/context/technical-context/technical-context.md`
 
 ## Decision needed

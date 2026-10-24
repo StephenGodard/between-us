@@ -1,11 +1,11 @@
 # Business brief: short-lived listening spaces (working title)
 
-Status: READY FOR REVIEW
+Mode: Living product context
 Date: 2026-10-24
 Primary product source: `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` (the user's exact answers).
 Primary event source: `docs/context/DevDay-Paris-Hackathon-Kickoff.pdf` (hackathon constraints only).
 Related draft: `docs/context/product-context/discovery/entre-nous-product-discovery.md` (a companion synthesis, not an independent source for product decisions; A-14).
-Supporting research: `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md` (official-source questions on safety and privacy, not approved product choices).
+Supporting research: `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md` (official-source questions on safety and privacy, not settled product choices).
 
 ## Original idea
 
@@ -31,7 +31,7 @@ The user wants an isolated person to receive first emotional support by speaking
 
 ### Hackathon demonstration boundary — confirmed
 
-The user validates **a locally testable mini-prototype alongside the two-minute video**, with two fictional participants, sample conversations, two-way chat and a real local audio call (A-8; A-10; A-12; A-13). In the video, the emphasis is the **start of a conversation**, the idea **“on est tous aidants”**, and the participant-facing **“tout s'efface”** ending (A-11). The application journey should show chat activation, messages, an audio call and the end of that call closing the exchange so neither participant can see or resume it (A-9; A-10; A-13; A-5). The prototype is for local fictional demonstrations, not real chats with people seeking support, and does not establish readiness for public use.
+The user validates **a locally testable mini-prototype alongside the two-minute video**, with two fictional participants on distinct devices sharing one LAN, sample conversations, two-way chat and a real audio call (A-8; A-10; A-12; A-13; A-22; A-23). In the video, the emphasis is the **start of a conversation**, the idea **“on est tous aidants”**, and the participant-facing **“tout s'efface”** ending (A-11). The application journey should show chat activation, messages, an audio call and the end of that call closing the exchange so neither participant can see or resume it (A-9; A-10; A-13; A-5). The prototype is for local fictional demonstrations, not real chats with people seeking support, and does not establish readiness for public use.
 
 The local prototype stores no conversation history (A-12); finishing a session clears its live messages and audio connection. This is distinct from the administrator-side archive wanted for a future real service (A-5; deferred by A-11). The demonstration must not claim that legal and safety rules for real conversations have already been resolved.
 
@@ -82,7 +82,7 @@ Hypothesis: In a test, an isolated participant can raise one difficult topic, re
 
 ### Candidate acceptance criteria to validate
 
-These are BA proposals in response to the user's concern (A-4), not approved requirements or a claim of effectiveness.
+These are BA proposals in response to the user's concern (A-4), not confirmed requirements or a claim of effectiveness.
 
 | ID | Observable check | Evidence needed |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ These are BA proposals in response to the user's concern (A-4), not approved req
 | AC-H7 | Before a real-user test, a named moderator and backup, reporting procedure, operating hours, and severe-danger route are documented and exercised with fictional cases. | Dry-run record and assigned owners; proposal informed by `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md` |
 | AC-H8 | In the hackathon demonstration, two fictional participants can activate a chat, exchange scripted messages, enter a call, and finish the session so neither can reopen it or contact the other in the demonstrated journey. | Recorded journey from both participant viewpoints; disappearance is a participant-facing behaviour, not a claim of deletion from all storage. |
 | AC-H9 | The two-minute video makes the start of the exchange and the message “on est tous aidants” understandable without suggesting that only a permanent class of “helpers” can listen. | Storyboard review against A-11; exact role labels remain a choice to make. |
-| AC-H10 | The local prototype supports two fictional participants sending messages and a real local audio call; ending the call clears the live exchange on both sides without storing conversation history. | Hands-on two-tab demonstration and check that no account, database, or persistent conversation store is used (A-12; A-13). |
+| AC-H10 | The local prototype supports two fictional participants on separate devices on the same LAN sending messages and a real audio call; ending the call clears the live exchange on both sides without storing conversation history. | Hands-on two-device demonstration and check that no account, database, or persistent conversation store is used (A-12; A-13; owner's 24 October 2026 device and network decisions). |
 
 ## Environmental impact claim and evidence
 

@@ -9,4 +9,4 @@
 - [ ] Any environmental impact claim names its evidence or is explicitly unverified; no number or method is invented.
 - [ ] The kickoff PDF's track examples are not treated as chosen product requirements; the deadline and pitch format are recorded as event constraints when relevant.
 - [ ] Open questions are material, grouped, and do not repeat answered questions.
-- [ ] The status reflects the evidence: `DRAFT` for early framing, `BLOCKED` for a material obstacle, `READY FOR REVIEW` for a coherent brief, `APPROVED` only after explicit user approval.
+- [ ] The brief is current living context: source trail, material contradictions, and unresolved questions are visible without an approval status.
