@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entre nous — essai des parcours d'entrée</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #262321; background: #f8f4ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input { font: inherit; }
+    button { cursor: pointer; border: 1px solid #7a5d52; border-radius: 10px; background: #fffaf6; color: #262321; padding: .7rem .9rem; }
+    button:hover { background: #f1e4db; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #b9624d; outline-offset: 2px; }
+    button.primary { border-color: #963f30; background: #963f30; color: #fff; }
+    button.primary:hover { background: #7f3327; }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    main { max-width: 1080px; margin: auto; padding: 1.4rem; }
+    h1 { margin: 0 0 .4rem; font-size: 1.5rem; }
+    h2 { font-size: 1.05rem; margin: 0 0 .35rem; }
+    p { line-height: 1.5; }
+    .intro { margin: 0 0 1rem; max-width: 72ch; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 1rem 0; }
+    .toolbar button[aria-pressed="true"] { background: #262321; color: #fff; }
+    .toolbar .reset { margin-left: auto; }
+    .devices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .device { min-height: 410px; background: #fffdf9; border: 1px solid #d5c6bb; border-radius: 18px; padding: 1rem; display: flex; flex-direction: column; }
+    .device-head { display: flex; justify-content: space-between; gap: .5rem; border-bottom: 1px solid #e6dcd4; padding-bottom: .8rem; margin-bottom: .8rem; }
+    .eyebrow, .status { color: #645b55; font-size: .85rem; }
+    .status { white-space: nowrap; }
+    .content { flex: 1; display: flex; flex-direction: column; }
+    .entry { display: grid; gap: .7rem; align-content: start; }
+    .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .topic-form { display: grid; gap: .6rem; align-content: start; }
+    .topic-form input { width: 100%; border: 1px solid #89776c; border-radius: 9px; padding: .7rem; background: #fff; }
+    .topic-list { display: grid; gap: .6rem; align-content: start; }
+    .topic-item { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; padding: .8rem; border: 1px solid #d5c6bb; border-radius: 12px; }
+    .waiting { display: grid; gap: .5rem; align-content: center; flex: 1; }
+    .messages { flex: 1; display: flex; flex-direction: column; gap: .55rem; padding: .3rem 0 1rem; }
+    .bubble { max-width: 85%; border-radius: 13px; padding: .65rem .8rem; line-height: 1.4; overflow-wrap: anywhere; }
+    .bubble.self { align-self: flex-end; background: #f0d8c9; }
+    .bubble.other { align-self: flex-start; background: #eeeae4; }
+    .bubble small { display: block; color: #645b55; margin-bottom: .15rem; }
+    .composer { display: flex; gap: .45rem; margin-top: auto; }
+    .composer input { min-width: 0; flex: 1; border: 1px solid #89776c; border-radius: 9px; padding: .7rem; background: #fff; }
+    .chat-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-top: .8rem; }
+    .call-state { display: grid; place-content: center; gap: .8rem; text-align: center; flex: 1; }
+    .closed { display: grid; place-content: center; text-align: center; flex: 1; }
+    .hint { color: #645b55; font-size: .87rem; }
+    @media (max-width: 720px) { .devices { grid-template-columns: 1fr; } .device { min-height: 350px; } .toolbar .reset { margin-left: 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Un sujet ouvre la conversation</h1>
+    <p class="intro">Maquette UX locale : essayez le parcours « sujet ouvert », puis comparez-le à un accès préparé. Un seul sujet fictif peut être ouvert à la fois. Échangez plusieurs messages depuis chaque panneau. L'appel est facultatif et simulé ; vous pouvez terminer directement le chat. Rien n'est enregistré.</p>
+    <div class="toolbar" aria-label="Variantes d'entrée">
+      <button type="button" id="variant-a" aria-pressed="true">A · Ouvrir ou rejoindre un sujet</button>
+      <button type="button" id="variant-b" aria-pressed="false">B · Accès préparés</button>
+      <button type="button" class="reset" id="reset">Recommencer</button>
+    </div>
+    <div class="devices" id="devices" aria-live="polite"></div>
+  </main>
+  <script>
+    const devices = document.getElementById('devices');
+    const variantButtons = {
+      a: document.getElementById('variant-a'),
+      b: document.getElementById('variant-b')
+    };
+    let variant = 'a';
+    let joined = { a: false, b: false };
+    let views = { a: 'entry', b: 'entry' };
+    let topic = '';
+    let openedBy = null;
+    let messages = [];
+    let stage = 'chat';
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+    }
+
+    function reset() {
+      joined = { a: false, b: false };
+      views = { a: 'entry', b: 'entry' };
+      topic = '';
+      openedBy = null;
+      messages = [];
+      stage = 'chat';
+      render();
+    }
+
+    function chooseVariant(next) {
+      variant = next;
+      variantButtons.a.setAttribute('aria-pressed', String(next === 'a'));
+      variantButtons.b.setAttribute('aria-pressed', String(next === 'b'));
+      reset();
+    }
+
+    function entryMarkup(side) {
+      if (variant === 'a') {
+        return `<div class="entry"><h2>Parler ou écouter, le temps d'une conversation</h2><p>Proposez un sujet ou rejoignez un échange en attente. Ensuite, chacun peut écrire et répondre librement.</p><div class="entry-actions"><button type="button" class="primary" data-intent="talk" data-side="${side}">J'ai besoin de parler</button><button type="button" class="primary" data-intent="listen" data-side="${side}">Je suis disponible pour écouter</button></div></div>`;
+      }
+      const intro = side === 'a'
+        ? 'Une conversation fictive autour du deuil peut commencer ici.'
+        : 'Une autre personne participe à cette conversation fictive autour du deuil.';
+      return `<div class="entry"><h2>Conversation fictive autour du deuil</h2><p>${intro}</p><div class="entry-actions"><button type="button" class="primary" data-enter="${side}">Entrer dans l'échange</button></div></div>`;
+    }
+
+    function topicMarkup(side) {
+      if (views[side] === 'create') {
+        return `<form class="topic-form" data-topic-form="${side}"><h2>De quoi souhaitez-vous parler ?</h2><label for="topic-${side}">Sujet de l'échange fictif</label><input id="topic-${side}" name="topic" value="Deuil" maxlength="60" required><p class="hint">Seul ce sujet sera visible dans la liste ouverte. Gardez les détails personnels pour la conversation.</p><button type="submit" class="primary">Ouvrir ce sujet</button></form>`;
+      }
+      if (views[side] === 'waiting') {
+        return `<div class="waiting"><h2>Sujet ouvert : ${escapeHtml(topic)}</h2><p>En attente d'une personne disponible pour échanger.</p><p class="hint">La conversation commencera quand elle rejoindra ce sujet.</p></div>`;
+      }
+      if (views[side] === 'topics') {
+        const available = topic && openedBy !== side && !joined[side];
+        return `<div class="topic-list"><h2>Sujets ouverts</h2><p>Choisissez un sujet sur lequel vous êtes disponible pour échanger.</p>${available ? `<div class="topic-item"><strong>${escapeHtml(topic)}</strong><button type="button" class="primary" data-join-topic="${side}">Rejoindre</button></div>` : '<p class="hint">Aucun sujet ouvert pour le moment.</p>'}</div>`;
+      }
+      return entryMarkup(side);
+    }
+
+    function chatMarkup(side) {
+      const bubbles = messages.map(message => {
+        const owner = message.side === side ? 'self' : 'other';
+        const label = message.side === side ? 'Vous' : "L'autre personne";
+        return `<div class="bubble ${owner}"><small>${label}</small>${escapeHtml(message.text)}</div>`;
+      }).join('');
+      const waiting = !joined[side === 'a' ? 'b' : 'a'];
+      return `<div class="content"><div class="messages">${bubbles || '<p class="hint">La conversation commence ici. Chacun peut écrire et répondre.</p>'}</div><form class="composer" data-composer="${side}"><input name="message" aria-label="Votre message" placeholder="Votre message" maxlength="240" ${waiting ? 'disabled' : ''}><button type="submit" class="primary" ${waiting ? 'disabled' : ''}>Envoyer</button></form><div class="chat-actions"><button type="button" data-call="true" ${waiting ? 'disabled' : ''}>Passer à l'appel · simulation (facultatif)</button><button type="button" data-end="true" ${waiting ? 'disabled' : ''}>Terminer l'échange</button></div>${waiting ? '<p class="hint">En attente de l’autre personne.</p>' : '<p class="hint">Vous pouvez rester dans le chat écrit et terminer l’échange ici.</p>'}</div>`;
+    }
+
+    function stageMarkup(side) {
+      if (!joined[side]) return variant === 'a' ? topicMarkup(side) : entryMarkup(side);
+      if (variant === 'a' && !joined[side === 'a' ? 'b' : 'a']) return topicMarkup(side);
+      if (stage === 'call') return '<div class="content call-state"><h2>Appel en cours · simulation</h2><p>La conversation continue à deux.</p><button type="button" class="primary" data-end="true">Terminer l’appel et l’échange</button></div>';
+      if (stage === 'closed') return '<div class="content closed"><h2>Cet échange est terminé</h2><p>Les messages ne sont plus visibles. Cette session ne peut pas être reprise.</p></div>';
+      return chatMarkup(side);
+    }
+
+    function render() {
+      devices.innerHTML = ['a', 'b'].map(side => `<section class="device" aria-label="Appareil ${side.toUpperCase()}"><div class="device-head"><div><div class="eyebrow">Appareil ${side.toUpperCase()}</div><strong>${topic ? `Sujet : ${escapeHtml(topic)}` : 'Conversation fictive'}</strong></div><div class="status">${stage === 'closed' ? 'Terminé' : joined.a && joined.b ? 'Connecté' : variant === 'a' && views[side] === 'waiting' ? 'En attente' : 'À rejoindre'}</div></div>${stageMarkup(side)}</section>`).join('');
+    }
+
+    devices.addEventListener('click', event => {
+      const intent = event.target.closest('[data-intent]');
+      if (intent) { views[intent.dataset.side] = intent.dataset.intent === 'talk' ? 'create' : 'topics'; render(); return; }
+      const topicJoin = event.target.closest('[data-join-topic]');
+      if (topicJoin && topic) { joined[topicJoin.dataset.joinTopic] = true; render(); return; }
+      const enter = event.target.closest('[data-enter]');
+      if (enter) { joined[enter.dataset.enter] = true; topic = 'Deuil'; render(); return; }
+      if (event.target.closest('[data-call]') && joined.a && joined.b) { stage = 'call'; render(); return; }
+      if (event.target.closest('[data-end]')) { stage = 'closed'; messages = []; render(); }
+    });
+
+    devices.addEventListener('submit', event => {
+      const topicForm = event.target.closest('[data-topic-form]');
+      if (topicForm) {
+        event.preventDefault();
+        const value = topicForm.elements.topic.value.trim();
+        if (!value || openedBy) return;
+        topic = value;
+        openedBy = topicForm.dataset.topicForm;
+        joined[openedBy] = true;
+        views[openedBy] = 'waiting';
+        render();
+        return;
+      }
+      const form = event.target.closest('[data-composer]');
+      if (!form) return;
+      event.preventDefault();
+      const input = form.elements.message;
+      const value = input.value.trim();
+      if (!value || !joined.a || !joined.b || stage !== 'chat') return;
+      messages.push({ side: form.dataset.composer, text: value });
+      render();
+      devices.querySelector(`[data-composer="${form.dataset.composer}"] input`).focus();
+    });
+
+    variantButtons.a.addEventListener('click', () => chooseVariant('a'));
+    variantButtons.b.addEventListener('click', () => chooseVariant('b'));
+    document.getElementById('reset').addEventListener('click', reset);
+    render();
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 Mode: Living intake record
 Started: 2026-10-24
 
-The French request and A-1 to A-23 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
+The French request and A-1 to A-34 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
 
 ## Original request
 
@@ -77,6 +77,17 @@ Relevant event constraints: The user says they selected the Impact and “public
 | F-44 | The user ranks backend skills .NET, Python, TypeScript/Node, Java, PHP from strongest to weakest. | Answer A-21 |
 | F-45 | The hackathon demonstration must work on two distinct devices. | Answer A-22 |
 | F-46 | Those devices will share one local network. | Answer A-23 |
+| F-47 | The owner asks for explicit user-experience context because the need and technical constraints are documented but the intended experience is not. | Request A-24 |
+| F-48 | For the hackathon demonstration, the owner chooses a warm, human interface atmosphere. | Answer A-25 |
+| F-49 | The owner chooses grief as the principal fictional exchange topic. | Answer A-26 |
+| F-50 | The owner asks to reuse the user-flow and journey structure from AnimeSphere and to move quickly without extensive UX research or discovery. | Request A-27 |
+| F-51 | The owner clarifies that the ephemeral conversation must remain reciprocal: either participant can write and respond, regardless of a helper/listener framing. The UX must make this clear. | Correction A-28 |
+| F-52 | The owner does not want to select an entry pattern from closed questions without trying alternatives; fluidity and intuitiveness need a lightweight experiment. | Answer A-29 |
+| F-53 | The owner likes the “need to talk” / “available to listen” framing and stresses that the initial screen directs the experience and communicates the product's meaning. | Reflection A-30 |
+| F-54 | The owner proposes that a person needing to talk opens a subject and waits, while an available listener sees and chooses among open subjects. The product and demo implications still need review. | Proposal A-31 |
+| F-55 | The owner confirms that entry option A fits their intended experience and clarifies that voice is optional for people who want a written-chat-only exchange. | Decision A-32 |
+| F-56 | Looking at the screens, the owner identifies a client/server model: clients open or join subject sessions, a server holds sessions and connects two clients, and the server must be reachable over the network. | Architecture observation A-33 |
+| F-57 | The owner clarifies that participants use a simple website URL, while the application obtains and places its data through a distinct backend website/server, analogous to a back office. | Architecture clarification A-34 |
 
 ## Hypotheses to test
 
@@ -271,6 +282,114 @@ Deux appareils distincts
 Même réseau local
 ```
 
+### A-24 — User experience-context request, verbatim
+
+```text
+je pense que c'est la bon moment pour réflechir à l'expérience utilisateurs, le besoin est cadré, les contraintes/contexte technique aussi, mais on a aucune info d'à quoi dois ressembler l'expérience,
+
+On a besoin d'avoir du contexte sur ca également,
+```
+
+### A-25 — User interface-atmosphere answer, verbatim
+
+Question: `Pour la démo, quelle ambiance veux-tu que l’interface évoque en premier ?`
+
+```text
+Chaleureuse et humaine
+```
+
+### A-26 — User main-story answer, verbatim
+
+Question: `Quel sujet doit porter l’échange fictif principal ?`
+
+```text
+Deuil
+```
+
+### A-27 — User experience-workflow request, verbatim
+
+```text
+pour aider, voici ce qu'on a fait sur animesphere, on a parler de "flux utilisateurs" et "parcours"
+
+Mais je n'ai pas le temps de me lancer dans de l‘ux reseach et discovery approfondis, on va devoir aller vite et se baser sur la structure que j'ai déjà produit
+```
+
+The [AnimeSphere UX Discovery — Parcours & MVP](https://app.notion.com/p/1bb32705124c8088be5add1868c85c60) is used as a **document-structure reference** for flow work. Its anime personas, routes, metrics, interactions and visual design are not evidence for this project.
+
+### A-28 — User correction and UX challenge, verbatim
+
+```text
+en lisant le scénario UX je remarque quelque chose, l'une personne écrit mais l'autre dois pouvoir répondre en message (le but du produit reste CONVERSATION EPHEMERE) et une conversation ca va dans les deux sens et ca peu importe que ce soit aidant ou pas,
+
+On a un sacré challenge UX à résoudre,
+
+Via l'agent PO et le context product on va brainstormer pour apporter une bonne solution UX
+```
+
+### A-29 — User response to entry-pattern question, verbatim
+
+Question: `Pour la démo, comment veux-tu présenter les deux personnes avant le chat, sachant que chacune pourra écrire librement ensuite ?`
+
+```text
+les questions sont assez fermé, et demande à être expérimenter, je ne sais pas laquelle rendra l'expérience la plus "fluide et intuitive"
+```
+
+### A-30 — User reflection on the initial screen, verbatim
+
+```text
+j'aime bien cette approche :
+
+« besoin de parler » et « disponible pour écouter » Mais je sais pas comment la "mettre en valeurs"
+
+Le sens du produit et les parcours viennent de cette écran initiale c'est lui qui "dirige" l'experience et la compréhension du produit
+```
+
+### A-31 — User proposal for subject-based entry, verbatim
+
+```text
+il manque "le choix du sujet egalement"
+
+J'aime bien l'approche du j'ai besoin de parler", puis je propose un sujet et j'attends que quelqu'un rejoingne,
+
+et la personne qui choisis disponible pour écouter, vois la liste des sujets "ouvert" et choisis
+
+Qu'en pense-tu ?
+```
+
+### A-32 — User selection of option A and optional voice, verbatim
+
+```text
+le A corresponds vraiment bien à ce que j'avais en tête, le seul point c'est l'appel vocale est optionnel pour les personnes voulant que du chat écris
+```
+
+### A-33 — User reflection on client/server sessions, verbatim
+
+```text
+vu l'infrastructure que j'ai en regardant les écrans (c'est mon oeil de développeur qui parle)
+
+Il faudra une infrastructure client/serveur,
+
+Les clients ouvre/rejoigne les sessions (sujet)
+
+les sessions sont sur un serveur et "connecte 2 clients entre eux"
+
+Et pour qu'il soient visible sur le réseau il faut bien qu'elle soit héberger sur un serveur,
+
+(je sais pas si tu as compris)
+```
+
+### A-34 — User clarification of separate frontend and backend, verbatim
+
+```text
+pour moi ce dois être un autre site internet/serveur (un peu comme un back-office)
+
+Les user se connecte via une url simple, et l'app en elle même obtiens/stock ses datas de l'autre serveur,
+
+Un peu comme un back-end
+
+Qu'en pense-tu ?
+```
+
 ## Decisions made by the user
 
 - The user says they selected “impact et public” at registration and confirms “public” means Build in Public; they have posted the Product Discovery on X for that track (A-16). The exact individual post URL was not supplied.
@@ -300,12 +419,20 @@ Même réseau local
 - The user selects a web application for the hackathon and expresses a Vue/Nuxt preference (A-19). The deployment provider, rendering mode, and any backend remain architecture decisions to review.
 - The user asks for a frontend and backend, with the backend chosen to suit the functional context and their skills (A-20); they rank .NET, Python, TypeScript/Node, Java, PHP from strongest to weakest (A-21).
 - The hackathon demonstration must work on two distinct devices sharing one local network (A-22; A-23). The existing same-browser prototype does not meet this later requirement.
+- The owner asks for reusable user-experience context (A-24), chooses a warm, human atmosphere for the demo (A-25), and selects grief as the principal fictional exchange topic (A-26). These decisions do not yet select a visual system, exact copy or call flow.
+- The owner asks to reuse AnimeSphere's user-flow and journey structure and to work quickly without extensive UX research (A-27). This changes the documentation approach, not the demo's confirmed behaviour.
+- The owner explicitly corrects the UX framing: the ephemeral conversation is reciprocal, and either participant can write and respond regardless of an “aidant” label (A-28). A possible entry intention must not act as a messaging permission or a fixed speaker/listener turn order.
+- The owner declines to choose among closed entry-pattern options without trying them; they want the UX judged by experience, especially fluidity and intuitiveness (A-29). Keep the alternatives provisional until a lightweight walkthrough supplies evidence.
+- The owner likes the two entry intentions and says the initial screen should orient the whole product experience (A-30). They propose a subject-opening and waiting path for the person who wants to talk, and an open-subject list for the person available to listen (A-31). This is a UX proposal to evaluate, not an explicit approval of public matching or a later real-person service.
+- The owner selects option A as matching their intended entry experience and clarifies that voice is optional: participants may keep the exchange entirely in written chat (A-32). The demo still needs a real audio-call capability from A-13; the path into it is a choice, and chat-only closure must be specified. This does not approve public matching or the later real-person service.
+- The owner identifies client/server session coordination as necessary for the two-device subject-led flow: clients open or join subject sessions; a reachable server maintains sessions and connects two clients (A-33). Exact server technology, hosting topology and public availability remain undecided.
+- The owner clarifies that the user-facing website and the backend are separate services: participants access a simple URL, while the app reads and sends session data through the backend (A-34). “Back-office” is their analogy for the separate service, not a decision to build an administrator interface. Whether the services run on distinct physical machines is not stated.
 
 ## Remaining unknowns
 
 - Whether “speaker” and “listener” are fixed profiles or intentions chosen for each conversation.
 - How close the listener's lived experience must be to the speaker's subject, and whether willingness and availability alone ever suffice.
-- Whether the demonstration should use separation or grief as its single scenario, and how closely a listener's experience must match.
+- How closely the listener's experience should match the selected grief scenario (A-26).
 - What kind of advice is acceptable, and what should be outside the listener's role.
 - The participant-visible identity rules and precise closure behaviour for the demonstrated call. Administrator access, archive retention period, and participant notice are deferred to the later real-service phase (A-11).
 - Who moderates and responds to harmful messages and urgent distress, and what evidence is sufficient before claiming the service helps.
@@ -313,7 +440,7 @@ Même réseau local
 - How to evaluate the intended emotional benefit without treating the user's belief in broad social benefit as demonstrated evidence.
 - The exact French/EU legal classifications and operational responsibilities identified in `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md`, which depend on the final service and first-user scope.
 - How to fit the user's proposed two-to-five-minute video concept into the required two-minute submission pitch (`docs/context/DevDay-Paris-Hackathon-Kickoff.pdf`, p. 6).
-- The call is confirmed as audio for the local prototype (A-13). A-10 links the end of the call to the disappearance of the exchange; “tout s'efface” needs to be shown as participant-visible disappearance. A-12 adds no storage in the demo, while A-5 separately requires administrator archives for a future real service.
+- The call is confirmed as audio for the local prototype (A-13) but optional within an exchange (A-32). A-10 links the end of a call to the disappearance of the exchange; the new chat-only route also needs a visible way to end the exchange. “Tout s'efface” means participant-visible disappearance. A-12 adds no storage in the demo, while A-5 separately requires administrator archives for a future real service.
 - The hackathon application will be web based (A-19) and demonstrated on two devices on one LAN (A-22; A-23). Whether the filmed view must resemble a phone, whether a public demo link is useful, and the target devices and distribution method for a later real service are Not provided. The earlier mobile idea (A-17) remains a possible later direction after the demo-first decision (A-18).
 
 ## Brief basis

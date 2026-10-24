@@ -15,7 +15,7 @@ The proposed service is a space for **citizens to listen to one another**, initi
 
 **Origin of the idea:** The project owner has seen isolated people struggle with difficult emotions and observed that listening to them could help them move forward (A-1). They believe some people keep their difficulties to themselves because they hesitate to approach a psychologist or another healthcare professional (A-1, A-6). These observations motivate the idea; they do not establish that a platform would have the same effect.
 
-**Confirmed hackathon scope:** A locally testable mini-prototype with two fictional participants on distinct devices sharing one LAN, sample conversations, two-way chat and a real audio call, plus a scripted two-minute video. The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13, A-22, A-23; kickoff video requirement).
+**Confirmed hackathon scope:** A locally testable mini-prototype with two fictional participants on distinct devices sharing one LAN, sample conversations, two-way chat and an optional real audio-call capability, plus a scripted two-minute video. A participant may finish an exchange in written chat without calling (A-32). The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13, A-22, A-23; kickoff video requirement).
 
 ## Who it is for 👤
 
@@ -43,7 +43,7 @@ The intended audience for a possible future service is **adults in France** (A-7
 
 **Desired change:** Enable a socially isolated person to begin speaking about a difficult experience with another citizen, feel heard without judgment and, if wanted, receive relevant lived experience (A-1, A-3, A-4, A-6). The project aims to contribute to mental well-being, but that effect has not been measured (A-3, A-6).
 
-**Demonstration objective:** Make the sequence understandable and testable: “I choose to talk or listen → a conversation begins → messages and an audio call can take place → the session ends and disappears from both participants' views.” The video starts with in-person listening and moves to a remote exchange in the application; the prototype lets people try the same principle locally (A-9 to A-13).
+**Demonstration objective:** Make the sequence understandable and testable: “I choose to talk or listen → one person opens a subject, another joins → both exchange messages → they may call or remain in chat → the session ends and disappears from both participants' views.” The video starts with in-person listening and moves to a remote exchange in the application; the prototype lets people try the same principle locally (A-9 to A-13, A-30 to A-32).
 
 ## Problems to address
 
@@ -81,11 +81,11 @@ A person should be able to say whether they want to **talk** or are **available 
 
 ### Choose a subject and find relevant listening
 
-The speaker chooses a subject they want to discuss; the listener indicates the subjects on which they are willing to listen. Matching by subject and comparable experience is the owner's proposal and still needs definition and validation (A-2 to A-4). Separation and grief are the first examples (A-4).
+For the fictional demo, the person who needs to talk opens a subject and waits; someone available to listen sees and chooses that open subject (A-30 to A-32). Grief is the main demo example (A-26). For a possible real service, matching by subject and comparable experience still needs definition and validation (A-2 to A-4); public discovery is not approved by the demo decision.
 
 ### Begin, continue and end an exchange
 
-Both people can send messages. Depending on the conversation, the speaker can be simply heard or welcome lived experience and advice (A-2 to A-4). An audio call is required in the local prototype (A-13). The session has an explicit end; afterward, participants cannot see the exchange or reconnect through it (A-5, A-10).
+Both people can send messages. Depending on the conversation, the person opening the topic can be simply heard or welcome lived experience and advice (A-2 to A-4, A-28). A real audio-call capability is required in the local prototype (A-13), but using voice in an exchange is optional (A-32). The session has an explicit end from chat or call; afterward, participants cannot see the exchange or reconnect through it (A-5, A-10, A-32).
 
 ### Report and protect — later phase
 
@@ -93,9 +93,9 @@ A participant should be able to report a hurtful message; human review and admin
 
 ## Hackathon journey and MVP
 
-**Demonstrated journey:** A fictional person experiences separation or grief → chooses to talk → another chooses to listen → the chat opens → a few messages show listening and perhaps shared experience → they start a local audio call → ending the call closes the session and removes the exchange from both views (A-3, A-4, A-9 to A-13).
+**Demonstrated journey:** A fictional person experiences grief → chooses to talk and opens a subject → another chooses to listen and joins it → both exchange messages → they may continue in written chat or start a local audio call → ending the chat or call closes the session and removes the exchange from both views (A-3, A-4, A-9 to A-13, A-26, A-28, A-30 to A-32). The owner chooses a warm, human interface atmosphere (A-25); exact visual treatment remains open in the [experience context](../../experience-context/experience-context.md).
 
-**Confirmed deliverables:** A locally testable prototype with two fictional participants, chat, sample conversations and an audio call; and a scripted **two-minute** submission video (A-8 to A-13; `docs/context/hackathon-kickoff.md`). Code created in `prototype/` before this discovery is **exploratory**; its existence does not validate the detailed journey or the future service.
+**Confirmed deliverables:** A locally testable prototype with two fictional participants, chat, sample conversations and an optional real audio-call capability; and a scripted **two-minute** submission video (A-8 to A-13, A-32; `docs/context/hackathon-kickoff.md`). Code created in `prototype/` before this discovery is **exploratory**; its existence does not validate the detailed journey or the future service.
 
 **Outside the demo:** Conversations with real people seeking help, public matching, accounts, archived exchanges, operational moderation, emergency calls and proof of improved well-being. Prototype data remains local and is not stored in a conversation history (A-8, A-10 to A-13).
 
@@ -107,7 +107,7 @@ A participant should be able to report a hurtful message; human review and admin
 | --- | --- | --- |
 | Session intentions rather than fixed profiles | Hypothesis from A-2 and A-11 | Can someone naturally choose to speak one day and listen another? Which words avoid stigma? |
 | Matching by comparable experience | Proposal in A-2/A-3; value unproven | How similar must experiences be for someone to feel understood? |
-| Separation or grief as the main story | Both are confirmed examples (A-4) | Which makes the need clearest in a two-minute video? |
+| Grief as the main fictional story | Selected by the owner after the initial alternatives (A-4, A-26) | What precise fictional situation and dialogue should the two-minute video show? |
 | Advice between citizens | Conditional wish in A-3/A-4 | How can the listener know whether the speaker wants listening or suggestions, and what boundaries apply? |
 | Benefit and negative effects | Intention, not demonstrated (A-4/A-6) | How can voluntary feedback and negative experiences be gathered before making benefit claims? |
 | Archives, safety, urgent distress | Later phase confirmed in A-11 | Which rules and capabilities are required before admitting real participants? |
@@ -120,4 +120,4 @@ A participant should be able to report a hurtful message; human review and admin
 - [Hackathon constraints](../../hackathon-kickoff.md)
 - [Exploratory prototype instructions](../../../../prototype/README.md)
 
-**Next BA review:** Confirm the main story, the wording of the two intentions and the exact promise with the owner. Keep this living context updated as those decisions are made.
+**Next BA review:** The main story is grief (A-26). Confirm the exact script, wording of the two intentions and the precise promise with the owner. Keep this living context updated as those decisions are made.
