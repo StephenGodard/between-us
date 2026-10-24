@@ -26,9 +26,9 @@ These are copy and layout hypotheses. The chosen visual direction remains **warm
 | --- | --- | --- | --- |
 | Initial screen | Selects « J'ai besoin de parler ». | Selects « Je suis disponible pour écouter ». | These are entry intentions, not persistent role permissions. |
 | Subject | Proposes a broad subject; the demo example is « Deuil ». | Sees a list of open subjects; the demo shows that one fictional subject. | **Hypothesis:** the list exposes the topic only; personal details belong inside the conversation. |
-| Before joining | Sees that the subject is open and waits for someone to join. | Chooses the subject and joins. | Waiting, empty-list and cancellation behaviour need review. |
+| Before joining | Sees that the subject is open and waits for someone to join; may cancel it (A-35). | Chooses the subject and joins. | Waiting duration and empty-list behaviour need review. |
 | Active exchange | Can write and answer as often as needed. | Can write and answer as often as needed. | One reciprocal chat; either person may choose an optional real audio call (D-R1, D-R2; A-28, A-32). |
-| End | Sees the conversation close. | Sees the conversation close. | Ending the written chat or the optional call clears both views and prevents session resumption (D-R3; A-32). |
+| End | Can explicitly end the subject session from chat or call (A-35); if the joiner quits, waits again with the same subject and no prior messages (A-36). | Sees closure when the opener ends it; can quit the current exchange without closing the subject. | Hanging up optional audio returns both to chat (A-36). Unexpected disconnection remains open. |
 
 ```mermaid
 flowchart LR
@@ -38,23 +38,24 @@ flowchart LR
     S --> W[Wait for someone to join]
     L --> O[See open subjects]
     O --> J[Choose the grief subject]
+    W -->|Cancel while waiting| X[Subject closed]
     W --> C[One reciprocal conversation]
     J --> C
     C -->|Optional| A[Live audio]
-    C -->|Finish in chat| E[Closed on both devices]
-    A --> E[Closed on both devices]
+    C -->|Opener ends exchange| E[Closed on both devices]
+    A -->|Opener ends exchange| E
 ```
 
 ## Questions exposed by this flow
 
 1. **Subject versus story:** Does “propose a subject” mean a broad category such as « Deuil », a free-text title, or a short description? The mockup starts with an editable « Deuil » example. For any real-person service, exposing personal details in an open list would require a separate privacy and safety decision.
-2. **Waiting:** What does the person who opened the subject see while nobody has joined? Can they edit or cancel? How long does it remain open? These behaviours are `Not provided.`
+2. **Waiting:** What does the person who opened the subject see while nobody has joined? They can cancel (A-35); editing and waiting duration are `Not provided.`
 3. **Choosing:** What does the listener need to know before joining? The demo can show one fictional subject without claiming a validated matching or ranking rule.
 4. **Connection:** If two people choose the same subject, or a second listener tries to join, what happens? The two-person demo does not settle multi-user rules.
-5. **Closure:** Does the subject disappear from the open list immediately when joined and stay unavailable whether chat or a call ends? This is the candidate UX to test; server behaviour remains unimplemented.
+5. **Closure and departure:** The opener can close the subject session. Joiner exit clears the current two-person exchange and returns the opener to waiting with the same subject; ordinary hangup returns both to chat (A-35, A-36). The result of an unexpected disconnect is still open.
 
 ## Rapid experiment
 
-The [local clickable mockup](entry-flow-lab.html) lets one panel open a fictional subject, wait, and the other panel find and join it. The same symmetric chat follows, with two ending routes: finish in written chat or take the simulated optional call and end it. The owner selected this entry direction after reviewing it (A-32). The [entry-flow experiment](entry-flow-experiment.md) remains a record of the alternatives, not evidence of participant usability. Observe whether a person can explain **what each initial action leads to**, find the open subject without coaching, and still understand that both can participate equally after joining.
+The [local clickable mockup](entry-flow-lab.html) lets one panel open a fictional subject, wait, and the other panel find and join it. The same symmetric chat follows; only the opener can explicitly end the subject session. The joiner can leave and clear the current conversation; the opener returns to waiting. The call is simulated and optional, and hangup returns to chat (A-36). The owner selected this entry direction after reviewing it (A-32). The [entry-flow experiment](entry-flow-experiment.md) remains a record of the alternatives, not evidence of participant usability. Observe whether a person can explain **what each initial action leads to**, find the open subject without coaching, and still understand that both can participate equally after joining.
 
 **Status:** Entry structure and optional voice selected by the owner (A-32); exact copy and interaction details remain hypotheses. **NOT RUN:** external participant observation; no real two-device chat, live audio, public subject list, privacy or safety validation. The [feature F-D-01](../../features/demo-fictional-exchange-chat.md) and revised PRD carry the demo requirement detail.

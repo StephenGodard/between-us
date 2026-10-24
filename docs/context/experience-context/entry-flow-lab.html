@@ -53,7 +53,7 @@
 <body>
   <main>
     <h1>Un sujet ouvre la conversation</h1>
-    <p class="intro">Maquette UX locale : essayez le parcours « sujet ouvert », puis comparez-le à un accès préparé. Un seul sujet fictif peut être ouvert à la fois. Échangez plusieurs messages depuis chaque panneau. L'appel est facultatif et simulé ; vous pouvez terminer directement le chat. Rien n'est enregistré.</p>
+    <p class="intro">Maquette UX locale : essayez le parcours « sujet ouvert », puis comparez-le à un accès préparé. Un seul sujet fictif peut être ouvert à la fois. Échangez plusieurs messages depuis chaque panneau. L'appel est facultatif et simulé. La personne qui ouvre le sujet peut annuler l'attente ou terminer l'échange. Si l'autre quitte, les messages s'effacent et le sujet revient en attente. Raccrocher ramène au chat. Rien n'est enregistré.</p>
     <div class="toolbar" aria-label="Variantes d'entrée">
       <button type="button" id="variant-a" aria-pressed="true">A · Ouvrir ou rejoindre un sujet</button>
       <button type="button" id="variant-b" aria-pressed="false">B · Accès préparés</button>
@@ -111,7 +111,7 @@
         return `<form class="topic-form" data-topic-form="${side}"><h2>De quoi souhaitez-vous parler ?</h2><label for="topic-${side}">Sujet de l'échange fictif</label><input id="topic-${side}" name="topic" value="Deuil" maxlength="60" required><p class="hint">Seul ce sujet sera visible dans la liste ouverte. Gardez les détails personnels pour la conversation.</p><button type="submit" class="primary">Ouvrir ce sujet</button></form>`;
       }
       if (views[side] === 'waiting') {
-        return `<div class="waiting"><h2>Sujet ouvert : ${escapeHtml(topic)}</h2><p>En attente d'une personne disponible pour échanger.</p><p class="hint">La conversation commencera quand elle rejoindra ce sujet.</p></div>`;
+        return `<div class="waiting"><h2>Sujet ouvert : ${escapeHtml(topic)}</h2><p>En attente d'une personne disponible pour échanger.</p><p class="hint">La conversation commencera quand elle rejoindra ce sujet.</p><button type="button" data-cancel="${side}">Annuler ce sujet</button></div>`;
       }
       if (views[side] === 'topics') {
         const available = topic && openedBy !== side && !joined[side];
@@ -127,14 +127,15 @@
         return `<div class="bubble ${owner}"><small>${label}</small>${escapeHtml(message.text)}</div>`;
       }).join('');
       const waiting = !joined[side === 'a' ? 'b' : 'a'];
-      return `<div class="content"><div class="messages">${bubbles || '<p class="hint">La conversation commence ici. Chacun peut écrire et répondre.</p>'}</div><form class="composer" data-composer="${side}"><input name="message" aria-label="Votre message" placeholder="Votre message" maxlength="240" ${waiting ? 'disabled' : ''}><button type="submit" class="primary" ${waiting ? 'disabled' : ''}>Envoyer</button></form><div class="chat-actions"><button type="button" data-call="true" ${waiting ? 'disabled' : ''}>Passer à l'appel · simulation (facultatif)</button><button type="button" data-end="true" ${waiting ? 'disabled' : ''}>Terminer l'échange</button></div>${waiting ? '<p class="hint">En attente de l’autre personne.</p>' : '<p class="hint">Vous pouvez rester dans le chat écrit et terminer l’échange ici.</p>'}</div>`;
+      const exit = side === openedBy ? `<button type="button" data-end="${side}">Terminer l'échange</button>` : `<button type="button" data-leave="${side}">Quitter l'échange</button>`;
+      return `<div class="content"><div class="messages">${bubbles || '<p class="hint">La conversation commence ici. Chacun peut écrire et répondre.</p>'}</div><form class="composer" data-composer="${side}"><input name="message" aria-label="Votre message" placeholder="Votre message" maxlength="240" ${waiting ? 'disabled' : ''}><button type="submit" class="primary" ${waiting ? 'disabled' : ''}>Envoyer</button></form><div class="chat-actions"><button type="button" data-call="true" ${waiting ? 'disabled' : ''}>Passer à l'appel · simulation (facultatif)</button>${exit}</div>${waiting ? '<p class="hint">En attente de l’autre personne.</p>' : '<p class="hint">Chacun peut écrire. Seule la personne qui a ouvert le sujet termine la session.</p>'}</div>`;
     }
 
     function stageMarkup(side) {
+      if (stage === 'closed') return '<div class="content closed"><h2>Cet échange est terminé</h2><p>Les messages ne sont plus visibles. Cette session ne peut pas être reprise.</p></div>';
       if (!joined[side]) return variant === 'a' ? topicMarkup(side) : entryMarkup(side);
       if (variant === 'a' && !joined[side === 'a' ? 'b' : 'a']) return topicMarkup(side);
-      if (stage === 'call') return '<div class="content call-state"><h2>Appel en cours · simulation</h2><p>La conversation continue à deux.</p><button type="button" class="primary" data-end="true">Terminer l’appel et l’échange</button></div>';
-      if (stage === 'closed') return '<div class="content closed"><h2>Cet échange est terminé</h2><p>Les messages ne sont plus visibles. Cette session ne peut pas être reprise.</p></div>';
+      if (stage === 'call') return `<div class="content call-state"><h2>Appel en cours · simulation</h2><p>La conversation continue à deux.</p><button type="button" data-hangup="${side}">Raccrocher et revenir au chat</button>${side === openedBy ? `<button type="button" class="primary" data-end="${side}">Terminer l'échange</button>` : `<button type="button" data-leave="${side}">Quitter l'échange</button>`}</div>`;
       return chatMarkup(side);
     }
 
@@ -148,9 +149,23 @@
       const topicJoin = event.target.closest('[data-join-topic]');
       if (topicJoin && topic) { joined[topicJoin.dataset.joinTopic] = true; render(); return; }
       const enter = event.target.closest('[data-enter]');
-      if (enter) { joined[enter.dataset.enter] = true; topic = 'Deuil'; render(); return; }
+      if (enter) { joined[enter.dataset.enter] = true; openedBy ||= enter.dataset.enter; topic = 'Deuil'; render(); return; }
       if (event.target.closest('[data-call]') && joined.a && joined.b) { stage = 'call'; render(); return; }
-      if (event.target.closest('[data-end]')) { stage = 'closed'; messages = []; render(); }
+      if (event.target.closest('[data-hangup]') && stage === 'call') { stage = 'chat'; render(); return; }
+      const cancel = event.target.closest('[data-cancel]');
+      if (cancel && cancel.dataset.cancel === openedBy && !(joined.a && joined.b)) { stage = 'closed'; topic = ''; messages = []; render(); return; }
+      const end = event.target.closest('[data-end]');
+      if (end && end.dataset.end === openedBy) { stage = 'closed'; topic = ''; messages = []; render(); return; }
+      const leave = event.target.closest('[data-leave]');
+      if (leave && leave.dataset.leave !== openedBy) {
+        if (variant === 'b') { reset(); return; }
+        joined[leave.dataset.leave] = false;
+        views[leave.dataset.leave] = 'entry';
+        views[openedBy] = 'waiting';
+        stage = 'chat';
+        messages = [];
+        render();
+      }
     });
 
     devices.addEventListener('submit', event => {

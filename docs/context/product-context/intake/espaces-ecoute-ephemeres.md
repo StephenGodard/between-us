@@ -3,7 +3,7 @@
 Mode: Living intake record
 Started: 2026-10-24
 
-The French request and A-1 to A-34 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
+The French request and A-1 to A-36 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
 
 ## Original request
 
@@ -88,6 +88,8 @@ Relevant event constraints: The user says they selected the Impact and “public
 | F-55 | The owner confirms that entry option A fits their intended experience and clarifies that voice is optional for people who want a written-chat-only exchange. | Decision A-32 |
 | F-56 | Looking at the screens, the owner identifies a client/server model: clients open or join subject sessions, a server holds sessions and connects two clients, and the server must be reachable over the network. | Architecture observation A-33 |
 | F-57 | The owner clarifies that participants use a simple website URL, while the application obtains and places its data through a distinct backend website/server, analogous to a back office. | Architecture clarification A-34 |
+| F-58 | The subject opener should intentionally end the exchange and close its server-held session; they can cancel while waiting. The joiner should not have the same close-session action, though the owner explicitly invites challenge on that rule. For the demo, the server will run locally on the owner's PC, first tested with Docker-based services on the PC and then with two phones connecting to it. | Decision and open challenge A-35 |
+| F-59 | The owner agrees with the proposed simple exit model: the joiner can leave, clearing the current exchange and returning the opener's subject to waiting; hanging up an optional call returns both to chat. They emphasize KISS. | Decision A-36, read with the immediately preceding recommendation |
 
 ## Hypotheses to test
 
@@ -390,6 +392,26 @@ Un peu comme un back-end
 Qu'en pense-tu ?
 ```
 
+### A-35 — User correction on session ownership and test environment, verbatim
+
+```text
+il faut que ce soit l'utilisateur qui met fin à l'échange et clos la session (d'ou le faite qu'elle soit héberger sur un serveur)
+
+L'utilisateur peut l'annuler durant l'attente et la personne qui rejoins ne peut la clore, (à challenger)
+
+Oui pour la démo, je testerai avec un serveur local qui tourne sur mon pc et deux téléphone qui s'y connecte,
+
+Mais on testera déjà depuis le pc avec plusieurs image docker(par exemple)
+```
+
+### A-36 — User agreement with the proposed simple interaction, verbatim
+
+```text
+je pense que tu as raison le but est de garder ce principe au mieux "KEEP IT SIMPLE,STUPID KISS" qu'est une règle d'or
+```
+
+The reply follows the assistant's explicit recommendation: the joiner may leave, the current conversation is cleared and the opener returns to waiting with the same subject; hanging up returns to written chat. This contextual interpretation is separate from the verbatim user text.
+
 ## Decisions made by the user
 
 - The user says they selected “impact et public” at registration and confirms “public” means Build in Public; they have posted the Product Discovery on X for that track (A-16). The exact individual post URL was not supplied.
@@ -427,6 +449,8 @@ Qu'en pense-tu ?
 - The owner selects option A as matching their intended entry experience and clarifies that voice is optional: participants may keep the exchange entirely in written chat (A-32). The demo still needs a real audio-call capability from A-13; the path into it is a choice, and chat-only closure must be specified. This does not approve public matching or the later real-person service.
 - The owner identifies client/server session coordination as necessary for the two-device subject-led flow: clients open or join subject sessions; a reachable server maintains sessions and connects two clients (A-33). Exact server technology, hosting topology and public availability remain undecided.
 - The owner clarifies that the user-facing website and the backend are separate services: participants access a simple URL, while the app reads and sends session data through the backend (A-34). “Back-office” is their analogy for the separate service, not a decision to build an administrator interface. Whether the services run on distinct physical machines is not stated.
+- The owner assigns intentional session closure to the person who opened it and allows them to cancel during the waiting state (A-35). They propose that the joiner cannot close the session but explicitly mark that restriction for challenge; a voluntary exit for the joiner still needs a decision. They choose a local server on their PC for the demo, first testing Docker-based services on the PC and then connecting two phones to that server. Docker image/container topology is an implementation proposal, not a choice of framework or proof of two-client operation.
+- The owner agrees with the recommended KISS interaction: the joiner can quit, clearing the current two-person exchange and returning the opener to waiting with the same subject; either participant can hang up an optional call and return both to chat without ending the subject session (A-36 in reply to the stated recommendation). The opener retains the explicit subject/session end action from A-35.
 
 ## Remaining unknowns
 
@@ -434,13 +458,13 @@ Qu'en pense-tu ?
 - How close the listener's lived experience must be to the speaker's subject, and whether willingness and availability alone ever suffice.
 - How closely the listener's experience should match the selected grief scenario (A-26).
 - What kind of advice is acceptable, and what should be outside the listener's role.
-- The participant-visible identity rules and precise closure behaviour for the demonstrated call. Administrator access, archive retention period, and participant notice are deferred to the later real-service phase (A-11).
+- The participant-visible identity rules and unexpected call/disconnect behaviour. Ordinary hangup and intentional closure now follow A-35 and A-36. Administrator access, archive retention period, and participant notice are deferred to the later real-service phase (A-11).
 - Who moderates and responds to harmful messages and urgent distress, and what evidence is sufficient before claiming the service helps.
 - Whether the second-plan emergency route means user-directed contact, administrator contact, or both; whether an exception to confirmation is needed for imminent danger, and what reliable details would be available in a pseudonymous service.
 - How to evaluate the intended emotional benefit without treating the user's belief in broad social benefit as demonstrated evidence.
 - The exact French/EU legal classifications and operational responsibilities identified in `docs/context/product-context/research/securite-confidentialite-ecoute-citoyenne.md`, which depend on the final service and first-user scope.
 - How to fit the user's proposed two-to-five-minute video concept into the required two-minute submission pitch (`docs/context/DevDay-Paris-Hackathon-Kickoff.pdf`, p. 6).
-- The call is confirmed as audio for the local prototype (A-13) but optional within an exchange (A-32). A-10 links the end of a call to the disappearance of the exchange; the new chat-only route also needs a visible way to end the exchange. “Tout s'efface” means participant-visible disappearance. A-12 adds no storage in the demo, while A-5 separately requires administrator archives for a future real service.
+- The call is confirmed as audio for the local prototype (A-13) but optional within an exchange (A-32). A-10 linked the end of a call to disappearance; A-35 and A-36 refine this into an opener-only explicit session end and ordinary hangup back to chat. “Tout s'efface” means participant-visible disappearance when an exchange ends. A-12 adds no storage in the demo, while A-5 separately requires administrator archives for a future real service.
 - The hackathon application will be web based (A-19) and demonstrated on two devices on one LAN (A-22; A-23). Whether the filmed view must resemble a phone, whether a public demo link is useful, and the target devices and distribution method for a later real service are Not provided. The earlier mobile idea (A-17) remains a possible later direction after the demo-first decision (A-18).
 
 ## Brief basis

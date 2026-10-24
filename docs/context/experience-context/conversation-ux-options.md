@@ -28,7 +28,7 @@ These points are the confirmed product boundary expressed as an experience check
 - **Both see the same conversation state.** Sender/recipient styling may distinguish messages, but the action area should have equal capability on both devices (D-R1).
 - **The spoken role is contextual.** The grief scenario may begin with one person explaining a loss and another listening; either can ask a question, clarify, share an experience or continue the exchange. Whether advice is invited is settled by the fictional dialogue, not a forced mode (A-3, A-4).
 - **Voice is optional.** Either participant may continue in written chat without entering a call (A-32; D-R2).
-- **The end is shared.** Ending written chat directly or ending an optional call closes the conversation for both, clears participant views and prevents reopening that session (D-R3).
+- **The intentional end belongs to the subject opener.** They may cancel while waiting or explicitly end the exchange from chat or call. Both participant views then clear and the session cannot be reopened (A-35; D-R3). The joiner may leave; the current exchange clears and the opener returns to waiting with the same subject (A-36). Hangup returns both to chat.
 
 ### Proposed demonstration rhythm
 
@@ -39,11 +39,11 @@ Person A: shares a grief-related thought
 Person B: acknowledges it and asks one open question
 Person A: replies, adding what they need from the exchange
 Person B: responds to that need, perhaps sharing lived experience
-Either: ends the written chat → both see the closed state
-Or: choose a real audio call; ending it → both see the closed state
+Opener: explicitly ends the written exchange → both see the closed state
+Or: choose a real audio call; opener explicitly ends the exchange → both see the closed state
 ```
 
-The exact loss, French words, advice boundary, order of call initiation and number of messages are `Not provided.` The script should not portray a guaranteed benefit or a professional consultation (A-1, A-4, A-6).
+A-36 settles joiner departure and ordinary hangup. Unexpected disconnection remains open. The exact loss, French words, advice boundary, order of call initiation and number of messages are `Not provided.` The script should not portray a guaranteed benefit or a professional consultation (A-1, A-4, A-6).
 
 ## UI implications to try in the next low-fidelity pass
 

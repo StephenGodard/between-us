@@ -1,35 +1,42 @@
 # Feature: Close and clear the exchange
 
 ID: F-D-03  
-Status: READY FOR REVIEW  
+Status: READY FOR REVIEW
 Horizon: fictional demo  
 Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`READY FOR REVIEW` revision; D-R3 and D-R4 boundary)  
 Date: 2026-10-24
 
 ## Outcome and actors
 
-When a fictional exchange ends, whether it stayed in chat or included an optional audio call, both participants see that it is over, lose access to its messages and cannot resume that exchange through the demonstrated session (A-5, A-10 to A-13, A-32; BR-7, BR-11). This specifies inventory F-05 for the demo. The visible end illustrates “tout s'efface” without claiming deletion of every technical trace or defining the future service's archive policy.
+The person who opened the fictional subject can cancel it while waiting or intentionally end its active exchange. When they end an active exchange, both participants see that it is over, lose access to its messages and cannot resume that exchange through the demonstrated session (A-5, A-10 to A-13, A-32, A-35, A-36; BR-7, BR-11). This specifies inventory F-05 for the demo. The visible end illustrates “tout s'efface” without claiming deletion of every technical trace or defining the future service's archive policy.
 
 ## Flow and boundaries
 
-After F-D-01's messages, a participant may end the chat directly without starting a call. If they entered the optional F-D-02 call, ending it ends the exchange. In either path, the exchange closes for both devices, its messages disappear from both participant views, and the same session cannot be reopened or used to reconnect the pair. A new fictional demonstration may be possible, but any new-session flow is `Not provided.` What happens after a lost connection, browser close or unexpected call failure is also `Not provided.`; these cases must be decided and tested before claiming a complete closure lifecycle.
+The subject opener may cancel before anyone joins. Once two people are present, the opener has an explicit session-end action available in written chat or during the optional F-D-02 call. That action closes the server-held subject session for both devices, removes its messages from both participant views and prevents reopening it. The joiner has a **Quitter** action instead: it removes that joiner, clears the current conversation for both, returns the opener to a waiting state with the same subject, and makes that subject available for a new joiner. A new joiner never sees the earlier conversation. Hanging up an optional call stops audio and returns both people to the same written chat; it does not close the subject session (A-35, A-36). Lost connection, browser close and unexpected call failure need separate rules before claiming a complete lifecycle.
+
+| Intentional action | Result for the subject | Result for the current conversation |
+| --- | --- | --- |
+| Opener cancels while waiting | Closed; removed from the open list. | None has started. |
+| Opener ends from chat or call | Closed for both; cannot be resumed. | Cleared from both views. |
+| Joiner quits | Same subject returns to waiting for its opener. | Cleared from both views; a later joiner starts fresh. |
+| Either hangs up | Still active with the same pair. | Written chat continues; audio stops. |
 
 ## Requirements and evidence
 
 | PRD requirement | Feature behaviour | Source state | Acceptance evidence |
 | --- | --- | --- | --- |
-| D-R3 | Ending a written chat directly, or ending its optional call, closes the demonstrated exchange, clears both participant views, and prevents resumption through that session. | Confirmed participant-visible outcome and later chat-only clarification (A-5, A-10, A-13, A-32; BR-7, BR-11). Unexpected-disconnect rule: `Not provided.` | Test both end paths on both devices; attempt to return to each ended exchange from each device. |
+| D-R3 | The opener can cancel while waiting or explicitly end the subject session from chat or call. Joiner exit clears the current two-person exchange and restores the opener's waiting subject; hangup returns both to chat. No previous exchange can be resumed. | A-35 and A-36, refining A-5, A-10, A-13 and A-32 (BR-7, BR-11). Unexpected disconnect rule: `Not provided.` | Test opener cancellation, closure from chat and call, joiner exit and subject reopening, and hangup to chat on both devices. Verify a new joiner cannot see prior messages. |
 | D-R4, shared with F-D-01 | No stored conversation history remains available through the demo; inspect the data path and logs before asserting the no-storage claim. | Confirmed demo boundary (A-12; BR-6, BR-7). Specific data lifetime: `Not provided.` | Inspect the integrated demo's storage and message-bearing logs, including after closure; distinguish view clearing from actual persistence. |
 
 ## Exclusions and dependencies
 
-Depends on F-D-01's active exchange. The call-ending route also depends on F-D-02; the chat-only route does not. D-R4's fictional sample content and active-message behaviour belong to F-D-01; its end-state is checked here. Technical session cleanup and secure two-device event delivery require design and verification under the [proposed infrastructure ADR](../adr/0001-web-demo-infrastructure.md).
+Depends on F-D-01's server-held subject session. The route from an optional call also depends on F-D-02; the chat-only route does not. D-R4's fictional sample content and active-message behaviour belong to F-D-01; its end-state is checked here. Technical session cleanup and secure two-device event delivery require design and verification under the [approved infrastructure ADR](../adr/0001-web-demo-infrastructure.md).
 
 Excluded: a universal deletion claim, an administrator archive, a retention policy for real participants, reports, moderation, emergency action and a lasting participant relationship. The two-minute video remains D-R5 outside this application feature.
 
 ## Open decisions and source reconciliation
 
-A-5 calls for administrator history in a later real service, A-11 defers its policy, and A-12 says the fictional demo stores no conversations. These apply to different horizons. A-10's “tout s'efface” is specified here as disappearance from both participant views and session non-resumption; A-32 adds an end route for exchanges that never enter voice. Integrated storage inspection supports the separate no-history demo boundary. Disconnect handling and server-log behaviour are `Not provided.`
+A-5 calls for administrator history in a later real service, A-11 defers its policy, and A-12 says the fictional demo stores no conversations. These apply to different horizons. A-10's “tout s'efface” is specified here as disappearance from both participant views and non-resumption of the prior exchange; A-32 allows an exchange that never enters voice. A-35 assigns intentional subject closure to the opener and cancellation during waiting. A-36 agrees with the proposed KISS transitions for joiner exit and hangup. Integrated storage inspection supports the separate no-history demo boundary. Unexpected disconnect handling and server-log behaviour are `Not provided.`
 
 ## Review record
 

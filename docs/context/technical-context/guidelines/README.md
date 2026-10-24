@@ -1,12 +1,12 @@
 # Engineering guidelines
 
-These are living coding guidelines for the fictional, two-device LAN demonstration described in the [technical context](../technical-context.md). They tell agents how to work once implementation is authorized and scoped. They do not select a Nuxt or .NET version, a rendering mode, a hosting topology, or the proposed [infrastructure ADR](../../../adr/0001-web-demo-infrastructure.md).
+These are living coding guidelines for the fictional, two-device LAN demonstration described in the [technical context](../technical-context.md). They tell agents how to work once implementation is authorized and scoped. [ADR 0001](../../../adr/0001-web-demo-infrastructure.md) now approves the architecture direction; these guidelines do not select exact Nuxt or .NET versions or a rendering mode.
 
 Read in this order:
 
 1. [Project coding guidelines](project-coding.md) — evidence, boundaries, code quality, and verification for every change.
 2. [Vue/Nuxt frontend guidelines](frontend-vue-nuxt.md) — when writing the web client.
-3. [.NET backend guidelines](backend-dotnet.md) — when writing the proposed C#/ASP.NET Core service.
+3. [.NET backend guidelines](backend-dotnet.md) — when writing the selected C#/ASP.NET Core service.
 
 ## Documentation lookup for agents
 

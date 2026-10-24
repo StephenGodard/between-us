@@ -4,6 +4,6 @@ ADRs document material technical choices individually. Each record states its sc
 
 | ADR | Status | Scope |
 | --- | --- | --- |
-| [0001 — Two-device web demo infrastructure](0001-web-demo-infrastructure.md) | `PROPOSED` | Fictional hackathon demonstration on two LAN devices |
+| [0001 — Two-device web demo infrastructure](0001-web-demo-infrastructure.md) | `APPROVED` | Fictional hackathon demonstration on two LAN devices |
 
-The user's web direction, Vue/Nuxt preference, frontend/backend request and two-device scope do not approve ADR 0001's specific Nuxt, ASP.NET Core/SignalR, hosting or audio plan. `APPROVED` requires explicit approval of that exact ADR.
+The owner explicitly approved ADR 0001 on 24 October 2026 with « je valide l'ADR ». This selects its demo architecture direction, including Nuxt, ASP.NET Core/SignalR, Docker Compose, a trusted HTTPS entry point and browser WebRTC. The implementation and two-phone checks remain outstanding; this approval does not approve the revised product PRD or feature specifications.

@@ -25,7 +25,7 @@ The exact grief story, subject input constraints, waiting and cancellation rules
 
 ## Exclusions and dependencies
 
-Depends on a way for two LAN devices to access the web demo and share an exchange; technical design and the [proposed infrastructure ADR](../adr/0001-web-demo-infrastructure.md) remain separate decisions. [F-D-02](demo-audio-call.md) uses the active exchange; [F-D-03](demo-exchange-closure.md) terminates it. D-R4's no-history condition also applies after closure and is checked with F-D-03.
+Depends on a way for two LAN devices to access the web demo and share an exchange; the [approved infrastructure ADR](../adr/0001-web-demo-infrastructure.md) selects the architecture direction, while implementation and verification remain separate work. [F-D-02](demo-audio-call.md) uses the active exchange; [F-D-03](demo-exchange-closure.md) terminates it. D-R4's no-history condition also applies after closure and is checked with F-D-03.
 
 Excluded: real participants seeking support, public matching, accounts, persistent profiles, a validated relevance algorithm, administrator archives, moderation and claims of emotional benefit. The two-minute video is PRD requirement D-R5, not part of this application feature.
 

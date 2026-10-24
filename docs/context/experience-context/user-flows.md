@@ -7,7 +7,7 @@
 
 The document follows the owner's [AnimeSphere UX Discovery — Parcours & MVP](https://app.notion.com/p/1bb32705124c8088be5add1868c85c60) **as a structure reference**: entry, goal, steps, exit/action, screens, success signal and friction for each path (intake A-27). No AnimeSphere persona, route, metric or interface choice is imported into “Entre nous”. Product evidence comes from [intake A-1 to A-13 and A-22 to A-32](../product-context/intake/espaces-ecoute-ephemeres.md), the [initial PRD revision](../../prds/entre-nous-initial.md) D-R1 to D-R4 and [demo features](../../features/README.md). The [conversation UX options](conversation-ux-options.md) address the owner's explicit reciprocity correction (A-28).
 
-**Flow outcome:** show one fictional grief conversation in which both participants can write, receive, reply and continue over several turns. They may finish in written chat or choose a live audio call; either route reaches the same closed state (A-32). The owner selected the [subject-led entry](subject-entry-flow.md): one person opens a subject and waits, and another chooses that open subject (A-30 to A-32). The entry perspectives do not define messaging permissions or a fixed turn order (A-28).
+**Flow outcome:** show one fictional grief conversation in which both participants can write, receive, reply and continue over several turns. They may stay in written chat or choose a live audio call; the subject opener can explicitly close the exchange from either state (A-32, A-35). The owner selected the [subject-led entry](subject-entry-flow.md): one person opens a subject and waits, and another chooses that open subject (A-30 to A-32). The entry perspectives do not define messaging permissions or a fixed turn order (A-28).
 
 ## Flow A — “I need to talk”
 
@@ -15,11 +15,11 @@ The document follows the owner's [AnimeSphere UX Discovery — Parcours & MVP](h
 | --- | --- |
 | Actor and goal | Fictional person who needs to speak about grief; show how an exchange starts (A-1 to A-4, A-26). |
 | Entry | **Owner-selected direction (A-30 to A-32):** choose « J'ai besoin de parler » on the shared initial screen. Exact copy and connection mechanics remain `Not provided.` |
-| Steps | 1. Propose the fictional grief subject. 2. See that the subject is open and wait for someone to join. 3. Enter the shared exchange. 4. Write a message. 5. Read the other person's reply and respond or ask a question in turn. 6. Continue writing, or choose a live audio call. 7. End the chat directly or end the optional call. 8. See the closed state. |
+| Steps | 1. Propose the fictional grief subject. 2. Wait for someone to join, with an option to cancel. 3. Enter the shared exchange. 4. Write a message. 5. Read the other person's reply and respond or ask a question in turn. 6. Continue writing, or choose a live audio call. 7. Explicitly end the exchange from chat or call. 8. See the closed state. |
 | Exit and action | The previous thread is absent from the participant view; the same session cannot be resumed or used to contact the listener (D-R3). |
 | Candidate screens/states | Entry → conversation → closed, with an optional call between conversation and closure. These are the [candidate screens](experience-context.md#candidate-screen-structure), not approved layouts. |
 | Success evidence | On device A, the participant can send, receive and reply across multiple turns, finish without voice, and see that the session closes; a separate call-path check verifies live audio (D-R1 to D-R3; A-28, A-32). |
-| Friction or open branch | Subject format, waiting and cancellation rules, exact grief script, join step, call invitation, microphone permission and unexpected disconnect are `Not provided.` |
+| Friction or open branch | Subject format, waiting duration, exact grief script, join step, call invitation, microphone permission and unexpected disconnect are `Not provided.` Cancellation while waiting follows A-35; ordinary hangup returns to chat (A-36). |
 
 ## Flow B — “I can listen”
 
@@ -27,15 +27,15 @@ The document follows the owner's [AnimeSphere UX Discovery — Parcours & MVP](h
 | --- | --- |
 | Actor and goal | Fictional citizen available to listen and participate in the same grief exchange (A-2 to A-4, A-26, A-28). This is a position in the demo, not a permanent profile or a restriction on writing. |
 | Entry | **Owner-selected direction (A-30 to A-32):** choose « Je suis disponible pour écouter » on the shared initial screen. Exact copy and connection mechanics remain `Not provided.` |
-| Steps | 1. See a list of open fictional subjects. 2. Choose the grief subject and join. 3. Read the other person's message. 4. Write a reply and continue with a question, thought or lived experience as the exchange allows. 5. Read and respond to the next message. 6. Continue in written chat or take part in the optional live audio call. 7. End the chat or call and see the closed state. |
+| Steps | 1. See a list of open fictional subjects. 2. Choose the grief subject and join. 3. Read the other person's message. 4. Write a reply and continue with a question, thought or lived experience as the exchange allows. 5. Read and respond to the next message. 6. Continue in written chat or take part in the optional live audio call. 7. See the closed state when the opener ends the exchange, or choose to leave; leaving clears the current exchange and returns the opener to waiting with the same subject (A-36). |
 | Exit and action | The previous thread is absent from the participant view; the same session cannot be resumed or used to contact the speaker (D-R3). |
 | Candidate screens/states | Entry → conversation → closed, with an optional call, shared with Flow A. |
 | Success evidence | On device B, the participant can receive, send and reply across multiple turns, finish without voice, and see that the session closes; a separate call-path check verifies live audio (D-R1 to D-R3; A-28, A-32). |
-| Friction or open branch | Empty-list behaviour, visible subject details, precise response and advice in the fictional script, join step, call acceptance, microphone permission and unexpected disconnect are `Not provided.` |
+| Friction or open branch | Empty-list behaviour, visible subject details, precise response and advice in the fictional script, join step, call acceptance, microphone permission and unexpected disconnect are `Not provided.` Voluntary joiner departure follows A-36. |
 
 ## Shared flow and convergence
 
-The two selected entry paths converge when the second person chooses the open subject. Both participants then have the same message capabilities; the chat can alternate in either direction without a prescribed turn order (A-28). Voice is optional, and closure from either path is propagated to **both** participants (A-32). D-R4's fictional sample content and no-history boundary apply throughout. The sketch shows product states, not a selected protocol or system architecture.
+The two selected entry paths converge when the second person chooses the open subject. Both participants then have the same message capabilities; the chat can alternate in either direction without a prescribed turn order (A-28). Voice is optional. The opener controls intentional closure, which is propagated to **both** participants (A-35). The joiner may leave: the prior messages clear and the opener returns to waiting with the same subject (A-36). Ordinary hangup returns both to chat. D-R4's fictional sample content and no-history boundary apply throughout. The sketch shows product states, not a selected protocol or system architecture.
 
 ```mermaid
 flowchart LR
@@ -45,8 +45,10 @@ flowchart LR
     S --> J
     J --> C[Two-way chat]
     C -->|Optional| V[Live two-way audio]
-    C -->|End written chat| E[Exchange ends]
-    V -->|End call| E
+    C -->|Opener ends exchange| E[Exchange ends]
+    V -->|Opener ends exchange| E
+    V -->|Hang up| C
+    C -->|Joiner quits; clear messages| W
     E --> EA[Closed view on A]
     E --> EB[Closed view on B]
 ```
@@ -55,7 +57,7 @@ flowchart LR
 | --- | --- | --- | --- |
 | Entry → exchange | One opens a grief subject and waits; the other selects it. Both then reach the same conversation and can write and reply freely. | D-R1; A-28, A-30 to A-32 | Subject format, waiting and joining rules. |
 | Chat → call (optional) | The same pair can choose to hear each other live. | D-R2; A-10, A-13, A-32 | Who initiates, how the other accepts, permission and failure feedback. |
-| Chat or call → closed | Ending the written chat directly or ending the optional call removes the exchange from both participant views and prevents session resumption. | D-R3; A-5, A-10, A-13, A-32 | Exact end action, closed-state copy, unexpected disconnection. |
+| Chat or call → closed | The opener explicitly ends the exchange, removing it from both participant views and preventing session resumption. | D-R3; A-5, A-10, A-13, A-32, A-35 | Closed-state copy and unexpected disconnection. Joiner exit and hangup follow A-36. |
 | Across all states | Fictional sample content is used without a stored conversation history. | D-R4; A-8, A-12 | Actual storage and log inspection is pending. |
 
 ## Minimum review for this rapid pass

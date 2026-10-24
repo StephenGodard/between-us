@@ -1,6 +1,6 @@
 # Features
 
-The [initial product PRD](../prds/entre-nous-initial.md) has three demo feature specifications ready for review, in dependency order. Its earlier baseline was approved; the revision reflecting A-32 is ready for review:
+The [initial product PRD](../prds/entre-nous-initial.md) has three demo feature specifications ready for review in dependency order. A-36 resolved the planned joiner exit and call hangup paths. Its earlier baseline was approved; the revised PRD is ready for review:
 
 | ID | Feature | PRD requirements |
 | --- | --- | --- |

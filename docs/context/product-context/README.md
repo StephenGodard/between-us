@@ -7,7 +7,7 @@ This directory is the entry point for the product's functional context. Read the
 | Step | Location | What it contains | Source authority |
 | --- | --- | --- | --- |
 | 1 | [Product summary](product-context.md) | Current intent, confirmed fictional demo scope, later phase and open questions | Working summary; follow citations to primary sources |
-| 2 | [Intake](intake/espaces-ecoute-ephemeres.md) | Original user wording, answers A-1 to A-34 and dated decisions | Primary source for product and demo choices; later explicit answers refine earlier ones |
+| 2 | [Intake](intake/espaces-ecoute-ephemeres.md) | Original user wording, answers A-1 to A-36 and dated decisions | Primary source for product and demo choices; later explicit answers refine earlier ones |
 | 3 | [Product discovery](discovery/entre-nous-product-discovery.md) | Structured problem, people, journey and MVP | Living synthesis; check cited intake answers |
 | 4 | [BA brief](briefs/espaces-ecoute-ephemeres.md) | Need, scope and business rules | Living synthesis; proposals and gaps remain labeled |
 
