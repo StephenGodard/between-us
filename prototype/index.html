@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ee" />
+    <title>Entre nous — local demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Entre nous, home">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>entre nous<span class="brand-period">.</span></span>
+        </a>
+        <span class="header-note">LOCAL PROTOTYPE · FICTIONAL EXCHANGES</span>
+      </header>
+
+      <main>
+        <section id="welcome" class="welcome page-panel">
+          <div class="welcome-copy">
+            <span class="eyebrow"><span class="eyebrow-line"></span> A MOMENT TO TALK</span>
+            <h1>Sometimes, we just need<br /><em>someone to listen.</em></h1>
+            <p class="lead">A place for citizens to listen to one another when words are hard to find. A conversation begins, then ends. No ongoing connection is expected.</p>
+            <div class="welcome-actions">
+              <button class="button button-primary" id="create-session" type="button">Create a fictional session <span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="welcome-footnote">This demo works only between two tabs in the same browser on this device. Use fictional content.</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-ring art-ring-one"></div>
+            <div class="art-ring art-ring-two"></div>
+            <div class="art-center"><span>“I’m here.<br />I’m listening.”</span></div>
+            <div class="art-star art-star-one">✳</div>
+            <div class="art-star art-star-two">✳</div>
+            <div class="art-caption">WE CAN ALL BE THERE FOR SOMEONE.</div>
+          </div>
+        </section>
+
+        <section id="session" class="session hidden" aria-label="Demo session">
+          <div class="session-top">
+            <div>
+              <span class="eyebrow"><span class="eyebrow-line"></span> SHORT-LIVED CONVERSATION</span>
+              <h1 class="session-title">One space, two voices.</h1>
+              <p class="session-subtitle">A fictional exchange showing how listening can begin.</p>
+            </div>
+            <div class="session-pill"><span class="status-dot"></span><span id="peer-status">Waiting for the other tab</span></div>
+          </div>
+
+          <div class="workspace">
+            <aside class="sidebar">
+              <div class="sidebar-section">
+                <p class="sidebar-label">YOUR PART IN THIS EXCHANGE</p>
+                <div class="role-card" id="role-card">
+                  <div class="role-icon" id="role-icon">◎</div>
+                  <div><strong id="role-name">I need to talk</strong><span>A role for this moment, not a label.</span></div>
+                </div>
+              </div>
+
+              <div class="sidebar-section">
+                <p class="sidebar-label">INVITE THE OTHER PERSON</p>
+                <p class="sidebar-text">Open this link in a second tab of the same browser.</p>
+                <div class="invite-box"><code id="invite-link"></code></div>
+                <a class="button button-outline button-small" id="open-peer" target="_blank" rel="noopener" href="#">Open the second tab <span aria-hidden="true">↗</span></a>
+                <button class="button button-outline button-small" id="copy-link" type="button">Copy link</button>
+              </div>
+
+              <div class="sidebar-section scenarios">
+                <p class="sidebar-label">DEMO SCENARIOS</p>
+                <button class="scenario-button" data-scenario="separation" type="button"><span class="scenario-symbol">◌</span><span><strong>After a separation</strong><small>A few messages to get started</small></span><span aria-hidden="true">↗</span></button>
+                <button class="scenario-button" data-scenario="deuil" type="button"><span class="scenario-symbol">✦</span><span><strong>Going through grief</strong><small>Listening without unsolicited advice</small></span><span aria-hidden="true">↗</span></button>
+              </div>
+
+              <div class="privacy-note"><span aria-hidden="true">✳</span><p><strong>A moment, then an ending.</strong> Demo messages stay in the memory of the open tabs. No account or saved history.</p></div>
+            </aside>
+
+            <section class="conversation" aria-label="Fictional conversation">
+              <div class="conversation-header">
+                <div class="conversation-person"><div class="person-avatar" id="partner-avatar">◌</div><div><strong id="partner-name">Someone available to listen</strong><span>Identity concealed · fictional exchange</span></div></div>
+                <div class="conversation-tools"><span class="topic-chip" id="topic-chip">Separation</span><button class="icon-button" id="call-button" type="button" title="Start an audio call" aria-label="Start an audio call" disabled>☎</button></div>
+              </div>
+
+              <div class="message-area" id="message-area" role="log" aria-live="polite" aria-label="Messages">
+                <div class="empty-state" id="empty-state"><div class="empty-icon">✳</div><h2>The first words can be the hardest.</h2><p>Open the other tab, send a message or load a fictional scenario to begin.</p></div>
+              </div>
+
+              <div class="call-banner hidden" id="call-banner" aria-live="polite">
+                <div class="call-banner-icon">☎</div>
+                <div class="call-banner-copy"><strong id="call-title">Audio call</strong><span id="call-detail">Waiting for an answer…</span></div>
+                <div class="call-banner-actions"><button class="button button-light button-small hidden" id="accept-call" type="button">Answer</button><button class="button button-danger button-small" id="end-call" type="button">End call</button></div>
+              </div>
+
+              <form class="composer" id="composer">
+                <label class="sr-only" for="message-input">Your fictional message</label>
+                <input id="message-input" type="text" maxlength="500" autocomplete="off" placeholder="Write a fictional message…" disabled />
+                <button class="button button-send" id="send-button" type="submit" disabled aria-label="Send message">↗</button>
+              </form>
+              <div class="conversation-footer"><span>You can end this exchange at any time.</span><button id="close-session" type="button">Close session <span aria-hidden="true">↗</span></button></div>
+
+              <div class="ended-overlay hidden" id="ended-overlay" role="status">
+                <div class="ended-symbol">✳</div><h2>This moment has ended.</h2><p>The messages and call have disappeared from this session. There is no link to resume this exchange.</p><button class="button button-primary" id="new-session" type="button">Create a new session <span aria-hidden="true">↗</span></button>
+              </div>
+            </section>
+          </div>
+          <p class="demo-warning">Hackathon prototype · Do not use for real or urgent support.</p>
+        </section>
+      </main>
+      <footer class="site-footer"><span>ENTRE NOUS · A DEMO OF CITIZENS LISTENING TO ONE ANOTHER</span><span>WE CAN ALL BE THERE FOR SOMEONE.</span></footer>
+    </div>
+    <audio id="remote-audio" autoplay playsinline></audio>
+  </body>
+</html>

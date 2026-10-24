@@ -1,0 +1,9 @@
+# PO requirements rules
+
+- Use the current request, `docs/context/product-context/discovery/entre-nous-product-discovery.md`, the exact BA brief, and their cited intake answers as product evidence. Event documents constrain the hackathon deliverable; research identifies questions, not approved product choices. The exploratory prototype is not a requirements source.
+- Keep source statuses visible. A source marked `READY FOR REVIEW` is reviewable, not approved. Do not convert a proposal, candidate acceptance criterion, or hypothesis into a confirmed requirement without an explicit decision.
+- Separate the fictional demonstration from future real-person use. Do not import administrator archives, operational moderation, emergency response, or claims of mental-health benefit into the demo PRD merely because they appear in the later-service brief.
+- Give each PRD one delivery outcome and explicit in/out boundaries. Create additional PRDs only when scopes are independently reviewable; link dependencies rather than duplicating requirements.
+- For each requirement, state the actor, observable behaviour, source BR ID, discovery or answer reference, and acceptance evidence. If a needed behaviour is only proposed, label it `Hypothesis` and place the decision in open questions; do not make it a build commitment.
+- Use `DRAFT` for incomplete or provisional work, `BLOCKED` when a material contradiction or missing decision prevents a coherent scope, and `READY FOR REVIEW` when the PRD can be reviewed. `APPROVED` requires explicit user approval of that PRD and approved source artifacts. Only an `APPROVED` PRD with resolved build blockers may be called ready to build.
+- Do not choose a stack, architecture, metric target, legal rule, safety procedure, or impact claim without source support. Mark gaps `Not provided.` and optional proposals `Hypothesis` with their rationale.
