@@ -9,11 +9,20 @@ This repository explores an initial listening exchange between citizens. The con
 | Product context | User answers, discovery, brief, event source, and research | [Product context](docs/context/product-context/README.md) |
 | Technical context and decisions | Observed code, architecture options, and ADRs | [Technical context](docs/context/technical-context/README.md) |
 | Agent framework | Active BA, PO and architect roles, rules, templates, checklists and discoverable skills | [Agent framework](.agents/README.md) and [agent entry point](AGENTS.md) |
+| Presentation page | Standalone landing page and proposed visual identity | [Landing page](landing/README.md) |
 | Exploratory code | A local, two-participant demo begun before discovery | [Prototype instructions](prototype/README.md) |
 | Future implementation | Code for a chosen delivery scope, once designed | [Source boundary](src/README.md) |
 | Validation | Future solution tests and current repository checks | [Tests](tests/README.md) and [tools](tools/README.md) |
 
-The [document index](docs/README.md) separates living functional and technical context, ADRs, and future PRDs. The current [web demo infrastructure ADR](docs/adr/0001-web-demo-infrastructure.md) is **PROPOSED**. `prototype/` is exploratory code, not the selected product or architecture baseline. No production source or solution tests have been scaffolded yet.
+The [document index](docs/README.md) separates living functional and technical context, ADRs, and future PRDs. The current [web demo infrastructure ADR](docs/adr/0001-web-demo-infrastructure.md) is **APPROVED**. `prototype/` is exploratory code, not the selected product or architecture baseline. The standalone landing page is a visual proposal; no production source or solution tests have been scaffolded yet.
+
+## View the presentation page
+
+```sh
+python3 -m http.server 4174
+```
+
+Open `http://127.0.0.1:4174/landing/`. Its link to the existing UX mockup illustrates the proposed entry path; it is not a live two-device demo.
 
 ## Try the exploratory prototype
 
