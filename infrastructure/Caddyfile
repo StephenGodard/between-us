@@ -1,0 +1,11 @@
+{$DEMO_HOST:localhost} {
+    tls internal
+    @backend path /api/* /hubs/*
+    handle @backend {
+        reverse_proxy backend:8080
+    }
+    handle {
+        reverse_proxy frontend:3000
+    }
+    header Cache-Control "no-store"
+}

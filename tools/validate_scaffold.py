@@ -3,6 +3,7 @@
 
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+import os
 import re
 import sys
 
@@ -19,10 +20,13 @@ required_files = [
     ROOT / "docs/features/README.md",
     ROOT / "docs/prds/README.md",
     ROOT / "docs/user-stories/README.md",
+    ROOT / "docs/implementation-plans/README.md",
     AGENTS / "README.md",
     AGENTS / "config.yaml",
     ROOT / "docs/context/product-context/README.md",
     ROOT / "docs/context/product-context/product-context.md",
+    ROOT / "docs/context/design-context/README.md",
+    ROOT / "docs/context/design-context/design-context.md",
     ROOT / "docs/context/hackathon-kickoff.md",
     ROOT / "docs/context/DevDay-Paris-Hackathon-Kickoff.pdf",
     ROOT / "docs/context/technical-context/README.md",
@@ -45,10 +49,10 @@ if (ROOT / "archive").exists():
 
 roles = sorted((AGENTS / "agents").glob("*-agent.md"))
 skills = sorted((AGENTS / "skills").glob("*/SKILL.md"))
-if {p.stem for p in roles} != {"ba-agent", "po-agent", "architect-agent", "build-in-public-agent"}:
-    errors.append("active roles differ from BA, PO, architect, Build in Public")
-if {p.parent.name for p in skills} != {"scaffold-project", "create-prd", "create-features", "shape-architecture", "share-progress"}:
-    errors.append("active skills differ from discovery, PRD, features, architecture, Build in Public")
+if {p.stem for p in roles} != {"ba-agent", "po-agent", "us-agent", "planning-agent", "dev-agent", "design-agent", "architect-agent", "build-in-public-agent"}:
+    errors.append("active roles differ from BA, PO, US, planning, dev, design, architect, Build in Public")
+if {p.parent.name for p in skills} != {"scaffold-project", "create-prd", "create-features", "create-user-story", "plan-implementation", "implement-story", "create-design", "shape-architecture", "share-progress"}:
+    errors.append("active skills differ from discovery, PRD, features, user stories, planning, development, design, architecture, Build in Public")
 
 for path, expected in [(p, p.stem) for p in roles] + [(p, p.parent.name) for p in skills]:
     content = path.read_text(encoding="utf-8")
@@ -63,8 +67,11 @@ for path, expected in [(p, p.stem) for p in roles] + [(p, p.parent.name) for p i
         errors.append(f"missing description: {path.relative_to(ROOT)}")
 
 active_markdown = [ROOT / "AGENTS.md", ROOT / "README.md"]
+generated_directories = {"node_modules", ".nuxt", ".output", "bin", "obj", ".git", "test-results", "playwright-report"}
 for directory in (AGENTS, ROOT / "docs", ROOT / "prototype", ROOT / "src", ROOT / "tests", ROOT / "tools"):
-    active_markdown.extend(directory.rglob("*.md"))
+    for current, children, filenames in os.walk(directory):
+        children[:] = [name for name in children if name not in generated_directories]
+        active_markdown.extend(Path(current) / name for name in filenames if name.endswith(".md"))
 
 markdown_link = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 repo_path = re.compile(r"(?<![\w/])\.agents/(?:agents|skills|rules|checklists|templates)/[\w./-]+\.(?:md|yaml)")

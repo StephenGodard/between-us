@@ -7,3 +7,7 @@ An ADR is part of the project's technical knowledge, but it is a separate decisi
 [Constraints](constraints.md) and [stack](stack.md) are sourced working files. They cover the owner's frontend/backend direction, backend skill order and two-device LAN scope. The [engineering guidelines](guidelines/README.md) describe how agents should research, code and verify the scoped implementation.
 
 Read the [product context](../product-context/README.md) and cited intake answers before changing technical decisions. The existing [`prototype/`](../../../prototype/README.md) is exploratory code, not a product requirement or build baseline. Future implementation belongs in [`src/`](../../../src/README.md) after scope and architecture are chosen.
+
+## Implemented application
+
+See the [implementation contract](implementation-contract.md) for exact protocol, limits and remaining interruption gaps, and the [local runbook](../../local-demo-runbook.md) for Compose and phone acceptance. Implementation evidence is recorded in each plan; earlier pending statements above describe the architecture decision baseline.

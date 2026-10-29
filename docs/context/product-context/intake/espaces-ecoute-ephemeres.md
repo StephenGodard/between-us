@@ -3,7 +3,7 @@
 Mode: Living intake record
 Started: 2026-10-24
 
-The French request and A-1 to A-36 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
+The French request and A-1 to A-41 answers below are preserved verbatim as source evidence. English summaries and decisions appear in the tables and sections around them.
 
 ## Original request
 
@@ -63,7 +63,7 @@ Relevant event constraints: The user says they selected the Impact and “public
 | F-30 | The user plans a scripted, storyboarded, advertisement-like video showing an in-person exchange followed by a remote conversation through the application. | Answer A-9; A-8 for fictional actors |
 | F-31 | The user proposes a two-to-five-minute video; the kickoff PDF requires a two-minute pitch video for submission. | Answer A-9; `docs/context/DevDay-Paris-Hackathon-Kickoff.pdf`, p. 6 |
 | F-32 | The user confirms the hackathon scope as fictional messages and a fictional conversation; real chats are deferred beyond the hackathon. | Answer A-10 |
-| F-33 | The user wants the demonstration to show activation of a chat, sending messages, and an ephemeral call; at the end of the call, the exchange disappears for participants. | Answer A-10; A-5 for participant-view interpretation |
+| F-33 | The user initially proposes showing chat activation, messages and an ephemeral call. A-41 later assigns the call to lot 2 and selects a chat-centered lot 1 video. | Answer A-10, refined by A-41; A-5 for participant-view interpretation |
 | F-34 | The user defers the archive policy to a second phase and prioritizes filming the beginning of the conversation, the disappearance of the participant exchange, and the idea “on est tous aidants.” | Answer A-11 |
 | F-35 | The user wants a locally testable mini-prototype to present alongside the video, with sample messages and developed fictional conversations, with nothing stored. | Answer A-12 |
 | F-36 | For this prototype, the user specifies a chat between two participants and a real local audio call. | Answer A-13 |
@@ -90,6 +90,11 @@ Relevant event constraints: The user says they selected the Impact and “public
 | F-57 | The owner clarifies that participants use a simple website URL, while the application obtains and places its data through a distinct backend website/server, analogous to a back office. | Architecture clarification A-34 |
 | F-58 | The subject opener should intentionally end the exchange and close its server-held session; they can cancel while waiting. The joiner should not have the same close-session action, though the owner explicitly invites challenge on that rule. For the demo, the server will run locally on the owner's PC, first tested with Docker-based services on the PC and then with two phones connecting to it. | Decision and open challenge A-35 |
 | F-59 | The owner agrees with the proposed simple exit model: the joiner can leave, clearing the current exchange and returning the opener's subject to waiting; hanging up an optional call returns both to chat. They emphasize KISS. | Decision A-36, read with the immediately preceding recommendation |
+| F-60 | The owner wants people to choose actions and take the demo tool in hand; the app should not automatically play through the scenario. The scripted video remains a separate deliverable. | Clarification A-37 |
+| F-61 | The owner wants a real interactive MVP micro-application: server-held sessions, a client that opens conversation subjects, and another client that chooses an open session according to the subject they want to discuss. They reject a scripted application scenario. | Scope correction A-38 |
+| F-62 | The owner splits delivery into lots: lot 1 is the video for Build in Public and a rapid product demonstration; lot 2 is the interactive micro-application and should follow quickly. | Delivery sequence A-39 |
+| F-63 | The owner explicitly approves both scoped PRDs: the lot 1 video and lot 2 interactive session MVP. Approval does not itself establish that the video or application has been produced or verified. | Approval A-40 |
+| F-64 | The owner chooses a chat-centered lot 1 video; the audio call is a lot 2 issue. | Decision A-41 |
 
 ## Hypotheses to test
 
@@ -412,7 +417,73 @@ je pense que tu as raison le but est de garder ce principe au mieux "KEEP IT SIM
 
 The reply follows the assistant's explicit recommendation: the joiner may leave, the current conversation is cleared and the opener returns to waiting with the same subject; hanging up returns to written chat. This contextual interpretation is separate from the verbatim user text.
 
+### A-37 — User clarification on interactive demo, verbatim
+
+```text
+question pour la démo, c'est un scénario ou les actions se font tout seul ?
+
+J'aimerais laisser le choix à l'utilisateur, le but est qu'il puisse "prendre en main" l'outil
+```
+
+### A-38 — User correction of MVP scope, verbatim
+
+```text
+charge moi l'agent PO j'ai un problème pour le périmètre, je ne souhaite pas de scénario scripter, je veux une vrai mirco-appli MVP avec le système de session (serveur) le client qui peut en ouvrir et lancer des sujet de conversation et l'autre client qui peut choisir de rejoindre celle qui l'intéresse en fonction du sujet qu'il a envie de couvrir
+```
+
+### A-39 — User decision on delivery lots, verbatim
+
+```text
+en faite, on va faire des lots, le premier lot sera la vidéo, mais on passera très vite au lot 2 le lot 1 est pour le build in public et avoir une démo rapidement du produit à présenter
+```
+
+### A-40 — User approval of both scoped PRDs, verbatim
+
+```text
+j'approuve ses deux PRD
+```
+
+### A-41 — User decision on call scope by lot, verbatim
+
+```text
+on garde une vidéo centrer sur le chat , l'appel audio est une problématique du lot 2
+```
+
+### A-42 — User decision on optional call interaction, 25 October 2026
+
+Question presented by the assistant, verbatim:
+
+```text
+Pour débloquer le plan audio, valides-tu que chacun puisse proposer un appel, que l’autre puisse accepter ou refuser, et qu’un refus du micro ou un échec ramène les deux au chat avec une explication ? Le plan exige une décision explicite sur ces interactions avant leur implémentation.
+```
+
+User answer, verbatim:
+
+```text
+Oui, implémenter ce fonctionnement
+```
+
+This explicitly selects either-participant invitation, acceptance or decline by the other participant, and return of both participants to chat with explanatory feedback after microphone denial or call setup failure. It authorizes implementation of this interaction; it is not evidence of tested audio or a decision about unexpected network loss or subject expiry.
+
+### A-43 — User requests the two-minute landing-to-application video, 25 October 2026
+
+Verbatim request:
+
+> maintenant qu'on a une application en locale est il possible de tourner une vidéo de présentation du produit ? 2 minutes on montre un échange ect. le but est de présenter passer de la landing page au prototype
+
+The assistant proposed a two-minute sequence: landing, opening a grief subject, a second participant joining, four fictional messages, participant-visible closure, and “On est tous aidants.” The assistant explicitly described the landing opening as replacing the previously planned in-person opening.
+
+Verbatim user acceptance:
+
+> yes go faire ca
+
+This authorizes production of that video using the local application. It refines A-9's opening and A-39's production order because the application now exists. It does not authorize publication or establish final-cut acceptance. The production sources and narration are in [media/product-demo](../../../../media/product-demo/README.md).
+
 ## Decisions made by the user
+
+- The owner requests and accepts a two-minute landing-to-application presentation with a fictional reciprocal chat and visible closure (A-43), replacing the earlier in-person opening.
+
+- The owner selects the optional call interaction and requests its implementation: either participant invites, the other accepts or declines, and microphone denial or setup failure returns both to chat with an explanation (A-42).
 
 - The user says they selected “impact et public” at registration and confirms “public” means Build in Public; they have posted the Product Discovery on X for that track (A-16). The exact individual post URL was not supplied.
 - The user emphasizes anonymity and ephemerality for the proposed discussion space (original request).
@@ -451,6 +522,11 @@ The reply follows the assistant's explicit recommendation: the joiner may leave,
 - The owner clarifies that the user-facing website and the backend are separate services: participants access a simple URL, while the app reads and sends session data through the backend (A-34). “Back-office” is their analogy for the separate service, not a decision to build an administrator interface. Whether the services run on distinct physical machines is not stated.
 - The owner assigns intentional session closure to the person who opened it and allows them to cancel during the waiting state (A-35). They propose that the joiner cannot close the session but explicitly mark that restriction for challenge; a voluntary exit for the joiner still needs a decision. They choose a local server on their PC for the demo, first testing Docker-based services on the PC and then connecting two phones to that server. Docker image/container topology is an implementation proposal, not a choice of framework or proof of two-client operation.
 - The owner agrees with the recommended KISS interaction: the joiner can quit, clearing the current two-person exchange and returning the opener to waiting with the same subject; either participant can hang up an optional call and return both to chat without ending the subject session (A-36 in reply to the stated recommendation). The opener retains the explicit subject/session end action from A-35.
+- The owner wants the mini-prototype to be interactive so a person can choose actions and take the tool in hand (A-37). The scripted scenario belongs to the separate video; sample content in the app must not make the session play itself.
+- The owner corrects the application scope to a genuine MVP micro-application: server-held sessions, user-created conversation subjects, and a second client choosing an open session by subject (A-38). The app has no scripted scenario. This refines the earlier single-grief-example framing for the application; the separate video decision remains recorded under A-9.
+- The owner splits delivery into lot 1, a video for Build in Public and rapid product presentation, followed quickly by lot 2, the interactive micro-application (A-39, read with A-38). The exact interval between lots is Not provided.
+- The owner explicitly approves both scoped PRDs, [lot 1 video](../../../prds/build-in-public-video-lot-1.md) and [lot 2 interactive MVP](../../../prds/interactive-session-mvp.md), in A-40. This is scope approval, not evidence that either deliverable exists or passes its checks.
+- The owner selects a chat-centered video for lot 1 and assigns the audio-call problem to lot 2 (A-41), refining the earlier idea in A-10 to show a call in the hackathon presentation.
 
 ## Remaining unknowns
 

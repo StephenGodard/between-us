@@ -3,7 +3,7 @@
 Status: APPROVED
 Date: 2026-10-24
 Delivery scope: fictional hackathon demonstration on two phones on the same local network, with preliminary PC testing
-Functional sources: `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` (especially A-12, A-13, A-18 to A-23 and A-30 to A-36); `docs/prds/entre-nous-initial.md` (`READY FOR REVIEW` revision, D-R1 to D-R4); `docs/features/demo-fictional-exchange-chat.md`, `docs/features/demo-audio-call.md`, `docs/features/demo-exchange-closure.md` (`READY FOR REVIEW`).
+Functional sources: `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` (especially A-12, A-13, A-18 to A-23 and A-30 to A-36); `docs/prds/entre-nous-initial.md` (`APPROVED` current revision, D-R1 to D-R4); `docs/features/demo-fictional-exchange-chat.md`, `docs/features/demo-audio-call.md`, `docs/features/demo-exchange-closure.md` (`APPROVED` for the fictional demo).
 Technical context: `docs/context/technical-context/technical-context.md`
 
 ## Decision scope
@@ -49,6 +49,8 @@ The backend is authoritative for one subject's opener, current joiner, availabil
 | Either hangs up | Keep the subject and exchange active; end only the audio state. | Stop audio and return both to the same written chat. |
 
 This decision follows the owner's backend proficiency, two-device LAN requirement, two-service model and KISS interaction choice. The owner explicitly approved this ADR with « je valide l'ADR » on 24 October 2026. Approval selects the architecture direction; it does not establish implementation readiness or working LAN audio. Exact versions, Nuxt rendering mode, certificate trust on both phones, open-subject expiry, unexpected disconnect handling and message-bearing logs still need design or verification.
+
+**Source status update, 25 October 2026:** the owner separately approved the current initial product PRD and all three linked demo feature specifications. This confirms the functional source status used by this ADR; it does not change or renew the architecture decision, approve a scoped delivery PRD, or resolve the open implementation details above.
 
 ## Consequences and review trigger
 

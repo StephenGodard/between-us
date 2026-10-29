@@ -6,4 +6,4 @@ ADRs document material technical choices individually. Each record states its sc
 | --- | --- | --- |
 | [0001 — Two-device web demo infrastructure](0001-web-demo-infrastructure.md) | `APPROVED` | Fictional hackathon demonstration on two LAN devices |
 
-The owner explicitly approved ADR 0001 on 24 October 2026 with « je valide l'ADR ». This selects its demo architecture direction, including Nuxt, ASP.NET Core/SignalR, Docker Compose, a trusted HTTPS entry point and browser WebRTC. The implementation and two-phone checks remain outstanding; this approval does not approve the revised product PRD or feature specifications.
+The owner explicitly approved ADR 0001 on 24 October 2026 with « je valide l'ADR ». This selects its demo architecture direction, including Nuxt, ASP.NET Core/SignalR, Docker Compose, a trusted HTTPS entry point and browser WebRTC. The current initial product PRD and three demo feature specifications were approved separately on 25 October 2026. Implementation and two-phone checks remain outstanding.

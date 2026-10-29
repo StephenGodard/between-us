@@ -1,0 +1,27 @@
+{
+  "name": "between-us-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev --host 0.0.0.0",
+    "build": "nuxt build",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "nuxt typecheck",
+    "format": "prettier --write app nuxt.config.ts package.json tsconfig.json",
+    "format:check": "prettier --check app nuxt.config.ts package.json tsconfig.json"
+  },
+  "dependencies": {
+    "@microsoft/signalr": "10.0.0",
+    "nuxt": "4.6.2",
+    "vue": "3.5.44",
+    "vue-router": "5.4.0"
+  },
+  "devDependencies": {
+    "prettier": "3.8.1",
+    "typescript": "5.9.3",
+    "vue-tsc": "3.2.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

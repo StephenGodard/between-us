@@ -1,9 +1,9 @@
 # Feature: Close and clear the exchange
 
 ID: F-D-03  
-Status: READY FOR REVIEW
+Status: APPROVED
 Horizon: fictional demo  
-Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`READY FOR REVIEW` revision; D-R3 and D-R4 boundary)  
+Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`APPROVED`; D-R3 and D-R4 boundary)
 Date: 2026-10-24
 
 ## Outcome and actors
@@ -38,6 +38,13 @@ Excluded: a universal deletion claim, an administrator archive, a retention poli
 
 A-5 calls for administrator history in a later real service, A-11 defers its policy, and A-12 says the fictional demo stores no conversations. These apply to different horizons. A-10's “tout s'efface” is specified here as disappearance from both participant views and non-resumption of the prior exchange; A-32 allows an exchange that never enters voice. A-35 assigns intentional subject closure to the opener and cancellation during waiting. A-36 agrees with the proposed KISS transitions for joiner exit and hangup. Integrated storage inspection supports the separate no-history demo boundary. Unexpected disconnect handling and server-log behaviour are `Not provided.`
 
+## Derived user stories
+
+- [US-D-08 — Share and protect temporary subject sessions](../user-stories/demo-shared-session-foundation.md) covers backend-enforced authority and fresh exchange state required by the intentional transitions.
+- [US-D-03 — Choose live audio and return to chat](../user-stories/demo-optional-audio.md) covers the shared hangup boundary.
+- [US-D-04 — Cancel or close my fictional subject](../user-stories/demo-opener-closes-subject.md) covers opener cancellation and closure.
+- [US-D-05 — Leave without closing the subject](../user-stories/demo-joiner-leaves.md) covers voluntary joiner exit and fresh rejoin.
+
 ## Review record
 
-Checked the parent PRD, discovery, BA brief, cited intake A-5 and A-10 to A-13, and current technical context on 24 October 2026. **NOT RUN:** two-device closure, session-resumption attempt, and storage/log inspection; the selected implementation is not present. Feature approval: `Not provided.` The owner's approval of the parent PRD does not approve this feature.
+Checked the parent PRD, discovery, BA brief, cited intake A-5 and A-10 to A-13, and current technical context on 24 October 2026. **NOT RUN:** two-device closure, session-resumption attempt, and storage/log inspection; the selected implementation is not present. **Approval:** the owner explicitly approved the demo features in the current conversation on 25 October 2026. This does not establish implementation readiness.

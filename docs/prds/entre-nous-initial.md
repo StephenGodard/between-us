@@ -1,9 +1,13 @@
 # Entre nous — initial product PRD
 
-Status: READY FOR REVIEW — revision after the approved 24 October baseline
-Date: 2026-10-24  
-Purpose: Product-wide inventory for feature decomposition. The 24 October baseline was approved; this revision incorporates the owner's later UX decision A-32 and needs review as an artifact. No scoped delivery PRD is approved.
-Build readiness: Not ready. The fictional demo needs its own scoped PRD and executable checks; the real-person service has unresolved safety, data and operational decisions.
+**Scope update (25 October 2026):** A-38 changes the application delivery boundary to an interactive MVP with user-created subjects and a choice among server-held open sessions. The [scoped delivery PRD](interactive-session-mvp.md) records the current approved boundary (A-40). The approved inventory and feature links below preserve their earlier decision history; their single-example and sample-conversation wording should not be treated as the current application limit. The scripted video remains separate under D-R5.
+
+**Delivery sequence update (25 October 2026):** A-39 places the [Build in Public video in lot 1](build-in-public-video-lot-1.md) and the [interactive application in lot 2](interactive-session-mvp.md), to follow quickly. A-41 selects a chat-centered video without an audio-call scene; the optional real call remains in lot 2. Both scoped PRDs were separately approved in A-40; approval does not establish working-demo evidence. D-R5 continues to inventory the video deliverable.
+
+Status: APPROVED — current revision accepted 25 October 2026
+Date: 2026-10-25
+Purpose: Product-wide inventory for feature decomposition. The 24 October baseline and the A-32 to A-36 revision were approved separately. The two later scoped delivery PRDs are approved in A-40.
+Build readiness: Not ready. The fictional demo has scoped PRDs but still needs resolved material production and implementation questions and executable checks; the real-person service has unresolved safety, data and operational decisions.
 
 ## Sources and precedence
 
@@ -11,7 +15,7 @@ Build readiness: Not ready. The fictional demo needs its own scoped PRD and exec
 - [BA brief](../context/product-context/briefs/espaces-ecoute-ephemeres.md), dated 24 October 2026: BR-1 to BR-11 and candidate acceptance checks.
 - [Intake](../context/product-context/intake/espaces-ecoute-ephemeres.md): original wording and explicit decisions A-1 to A-36. Later answers refine earlier ones.
 - [Product summary](../context/product-context/product-context.md), updated 24 October 2026: current boundary and open questions.
-- [Technical context](../context/technical-context/technical-context.md), dated 24 October 2026: constraints and architecture decisions. ADR 0001 was approved separately after this PRD revision; this product PRD does not itself choose the stack.
+- [Technical context](../context/technical-context/technical-context.md), updated 25 October 2026: constraints and architecture decisions. ADR 0001 was approved separately after this PRD revision; this product PRD does not itself choose the stack.
 - [Hackathon event summary](../context/hackathon-kickoff.md): the two-minute submission constraint, not a product requirement for the later service.
 
 The exploratory `prototype/` is not a requirements source. The working name “Entre nous” is not a final product-name decision.
@@ -31,7 +35,7 @@ The two demo entry intentions are “need to talk” and “available to listen�
 
 ## Feature inventory
 
-IDs identify product capabilities for later decomposition; they are not approved feature specifications. “Confirmed” means supported by an explicit owner decision for the stated horizon. “Hypothesis” means a proposed behaviour or unresolved design choice. A-IDs link to the intake; BR-IDs link to the BA brief.
+IDs identify product capabilities for decomposition; the approved demo feature specifications have separate F-D IDs below. “Confirmed” means supported by an explicit owner decision for the stated horizon. “Hypothesis” means a proposed behaviour or unresolved design choice. A-IDs link to the intake; BR-IDs link to the BA brief.
 
 | ID | Capability / outcome | Horizon and state | BR / discovery and intake trail | Main boundary or decision |
 | --- | --- | --- | --- | --- |
@@ -56,7 +60,7 @@ These requirements preserve the confirmed demo outcome for a later scoped PRD. T
 | D-R2 | During the active exchange, the two fictional participants can choose to conduct a real local audio call; written chat remains a valid path without a call. | BR-11 | Discovery “Hackathon journey and MVP”; A-13, A-22, A-23, A-32 | Audible two-way call is available on the chosen LAN devices, while a separate run can remain in chat. |
 | D-R3 | The subject opener can cancel while waiting or intentionally end an active exchange from chat or call. The server closes the subject session, clears both views and prevents resumption. If the joiner quits, clear the current exchange and return the opener's same subject to waiting; the previous two-person exchange cannot be resumed. Hanging up an optional call returns both to chat without ending the subject session. | BR-7, BR-11 | Discovery “Begin, continue and end”; A-5, A-10, A-13, A-32, A-35, A-36 | Test cancellation, opener closure from chat and call, joiner exit with cleared messages and reopened waiting subject, and hangup back to chat on both devices. Attempt to resume the previous exchange. |
 | D-R4 | The local demo uses fictional sample conversations without a stored conversation history. | BR-6, BR-7 | Discovery “Hackathon journey and MVP”; A-8, A-12 | Inspect the demonstrated data path and verify no conversation store; no claim about unrelated logs until checked. |
-| D-R5 | A scripted two-minute video begins with in-person listening, moves to the remote exchange and communicates “on est tous aidants” and the participant-visible end. | No dedicated BR; event deliverable | Discovery “Hackathon journey and MVP”; A-9, A-11; event summary | Storyboard and timed video review. |
+| D-R5 | A scripted two-minute video begins with in-person listening, moves to a reciprocal remote written chat, and communicates “on est tous aidants” and the participant-visible end without an audio-call scene. | No dedicated BR; event deliverable | Discovery “Hackathon journey and MVP”; A-9, A-11, A-41; event summary | Storyboard and timed video review, including the call exclusion. |
 
 ## Dependencies, exclusions and open decisions
 
@@ -66,7 +70,7 @@ For D, real users seeking support, public matching, accounts, administrator arch
 
 ## Feature decomposition and coverage
 
-This decomposition selects **horizon D only**. F-D-01, F-D-02 and F-D-03 are `READY FOR REVIEW` after A-36 resolved the planned joiner exit and hangup paths. Approval of this PRD does not approve the features or authorize implementation.
+This decomposition selects **horizon D only**. The owner approved F-D-01, F-D-02 and F-D-03 explicitly on 25 October 2026. Their approval is separate from this PRD and does not establish implementation readiness.
 
 | Feature specification | Inventory capabilities | Demo requirements | Boundary |
 | --- | --- | --- | --- |
@@ -97,3 +101,7 @@ Checked the discovery, BA brief, cited intake decisions, product and technical c
 **Session-ownership and test-plan clarification, 24 October 2026:** the owner wants the person who opened the subject to cancel it while waiting or intentionally end the active exchange on the server (A-35). They question whether the joiner should have a close action; the joiner must still be able to leave, so the effect of leaving and of hanging up an optional call require a product decision. The demo host is the owner's PC, with Docker-based PC checks before two-phone LAN checks. This later clarification supersedes D-R3's earlier assumption that either participant ending a call automatically ends the session.
 
 **KISS interaction clarification, 24 October 2026:** the owner agreed with the immediately preceding recommendation (A-36): joiner exit clears the current two-person exchange and returns the opener to waiting with the same subject; hanging up returns both to written chat. The old exchange is never resumed or exposed to a new joiner. This settles the intentional UI transitions for the demo; unexpected disconnection remains open.
+
+**Current approval, 25 October 2026:** the owner explicitly wrote “j'approuve la features de Demo, et le prd initial” in the current conversation, after reviewing the distinction between the approved baseline and this revision. This approves the current product-wide PRD and the three linked demo feature specifications. It does not approve a scoped delivery PRD, resolve the remaining open behaviours, or establish build readiness.
+
+**Post-approval interaction clarification, 25 October 2026:** the owner wants people to choose actions and take the mini-prototype in hand (intake A-37). The separate video remains scripted under D-R5; the application journey in D-R1 to D-R4 is interactive. This clarifies the existing hands-on requirements without approving a new scoped PRD or the derived user stories.

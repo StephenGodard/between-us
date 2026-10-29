@@ -1,6 +1,6 @@
 # Experience context — fictional hackathon demo
 
-**Updated:** 24 October 2026  
+**Updated:** 25 October 2026
 **Scope:** The web demonstration with two fictional participants on distinct devices on one LAN. This document is living context. It proposes a coherent experience for review; it does not approve a screen design or a future real-person service.
 
 The companion [user-flow map](user-flows.md) follows the owner's AnimeSphere flow-document structure (A-27) for a rapid pass. It traces two entry perspectives that converge in one reciprocal conversation. The [conversation UX options](conversation-ux-options.md) compare ways to express that both people can write and reply regardless of an initial intention (A-28).
@@ -13,8 +13,8 @@ The selected [subject-led entry](subject-entry-flow.md) lets the person who need
 
 - [Intake](../product-context/intake/espaces-ecoute-ephemeres.md): A-1 to A-5 for the listening purpose and end of contact; A-8 to A-13 for the fictional journey, video and “on est tous aidants”; A-19 and A-22 to A-23 for web and two-device LAN delivery; A-24 to A-26 for the UX request, warm and human atmosphere, and grief as the main fictional topic. Later explicit answers refine earlier open questions.
 - [Product discovery](../product-context/discovery/entre-nous-product-discovery.md) and [BA brief](../product-context/briefs/espaces-ecoute-ephemeres.md): functional synthesis, not independent design decisions.
-- [Initial PRD revision for review](../../prds/entre-nous-initial.md): D-R1 to D-R5; the original baseline was approved before A-32. The revised requirements reflect optional voice and both ending routes, and await artifact review.
-- [Feature specifications](../../features/README.md): F-D-01 to F-D-03 are ready for review after A-36 resolved the planned joiner exit and hangup paths. [Technical context](../technical-context/technical-context.md) describes constraints and proposed architecture, not visual requirements.
+- [Approved initial PRD revision](../../prds/entre-nous-initial.md): D-R1 to D-R5; the original baseline and current revision were approved separately. The revised requirements reflect optional voice and both ending routes.
+- [Approved demo feature specifications](../../features/README.md): F-D-01 to F-D-03 were approved on 25 October 2026 after A-36 resolved the planned joiner exit and hangup paths. [Technical context](../technical-context/technical-context.md) describes constraints and the approved demo architecture direction, not visual requirements.
 
 ## Experience intent
 
@@ -47,7 +47,7 @@ These are **layout hypotheses** for a later wireframe. They describe information
 
 1. **Entry / intention and subject:** one brief sentence about a temporary, reciprocal conversation; two equally prominent actions, « J'ai besoin de parler » and « Je suis disponible pour écouter ». The first proposed path opens a subject and waits; the second lists open subjects and lets someone join (A-30, A-31). The demo uses one fictional grief topic. Exact subject input, empty-list and waiting behaviour remain hypotheses, and the wording should avoid permanent “victim” or “helper” labels (A-2, A-11).
 2. **Conversation:** a modest topic header, a readable two-person message thread and the same prominent composer and send action on both devices. Each participant can continue, question or reply without a turn restriction. Show the optional voice action, an opener-only session-end action and a joiner exit. Joiner exit clears the messages and returns the opener to waiting with the same subject (A-36). The exact message script and whether examples are prefilled are `Not provided.`
-3. **Audio state:** make it evident that this is a live call with the same person in the same exchange. Distinguish hanging up, which returns both to chat, from the opener intentionally ending the whole exchange (A-36). The controls for invitation, acceptance, microphone and unexpected failure are `Not provided.`
+3. **Audio state:** make it evident that this is a live call with the same person in the same exchange. Distinguish hanging up, which returns both to chat, from the opener intentionally ending the whole exchange (A-36). A-42 selects invitation by either participant, acceptance or decline by the other, and return of both to chat with an explanation on microphone denial or setup failure. Unexpected network loss remains undecided.
 4. **Closed state:** tell both sides that the conversation is finished and no longer accessible through this session. Do not imply a universal data-erasure guarantee; the demo's no-history claim has its own technical inspection in D-R4. Exact copy and any new-demo action are `Not provided.`
 
 **Low-fidelity composition hypothesis:** a compact page header can keep the fictional context visible, while one main panel changes with the interaction. The sketches show hierarchy only; labels and controls are candidates.
@@ -83,7 +83,7 @@ Two-person chat ↔ two-way messages
                          Closed exchange on both devices
 ```
 
-This sketch covers the opener's intentional end path. A-36 also selects joiner exit → clear current messages and return the opener to waiting with the same subject, plus hangup → written chat. Lost network connection, denied microphone permission, unanswered call, browser close and returning with an old session link require explicit experience decisions before detailed design and validation.
+This sketch covers the opener's intentional end path. A-36 also selects joiner exit → clear current messages and return the opener to waiting with the same subject, plus hangup → written chat. A-42 resolves microphone denial and call setup failure as return to chat with explanatory feedback. Lost network connection, unanswered call, browser close and returning with an old session link remain open experience questions.
 
 ## Visual and verbal direction
 

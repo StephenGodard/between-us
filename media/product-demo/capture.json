@@ -1,0 +1,12 @@
+{
+  "raw": "/Users/stephen.godard/GitHub/hackaton-codex/between-us/media/product-demo/capture/page@6dc75c4d0d08e6126d7aa9cf96be9d28.webm",
+  "startOffsetSeconds": 1.256,
+  "duration": 120,
+  "errors": [],
+  "checks": [
+    "Two live clients connected",
+    "Four messages received by the other participant",
+    "Closure notice on both clients",
+    "Conversation messages absent after closure"
+  ]
+}

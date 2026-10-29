@@ -1,9 +1,9 @@
 # Feature: Optional real two-way audio call
 
 ID: F-D-02  
-Status: READY FOR REVIEW  
+Status: APPROVED
 Horizon: fictional demo  
-Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`READY FOR REVIEW` revision; D-R2)  
+Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`APPROVED`; D-R2)
 Date: 2026-10-24
 
 ## Outcome and actors
@@ -30,6 +30,11 @@ Excluded: a simulated recording in place of live audio, calls with real support 
 
 A-13 explicitly confirms a **real audio-call capability** in a two-person local demo. A-32 clarifies that people may want only written chat, so an individual exchange need not use voice. A-10 ties the end of a call to “tout s'efface”; A-35 later assigns intentional session closure to the opener, and A-36 selects ordinary hangup back to chat. Exact call entry and unexpected-disconnect behaviour are still open. The technical context identifies secure-origin and network constraints, but they are verification concerns rather than settled product choices.
 
+## Derived user stories
+
+- [US-D-07 — Access the local demo from two devices](../user-stories/demo-local-two-service-access.md) covers the trusted phone-origin prerequisite, not the live call outcome.
+- [US-D-03 — Choose live audio and return to chat](../user-stories/demo-optional-audio.md) covers the optional call and ordinary hangup; its entry/acceptance flow remains blocked.
+
 ## Review record
 
-Checked the parent PRD, discovery, BA brief, cited intake A-10, A-13, A-22 and A-23, and current technical context on 24 October 2026. **NOT RUN:** actual two-device audio and secure-origin checks; the selected implementation is not present. Feature approval: `Not provided.` The owner's approval of the parent PRD does not approve this feature.
+Checked the parent PRD, discovery, BA brief, cited intake A-10, A-13, A-22 and A-23, and current technical context on 24 October 2026. **NOT RUN:** actual two-device audio and secure-origin checks; the selected implementation is not present. **Approval:** the owner explicitly approved the demo features in the current conversation on 25 October 2026. This does not establish implementation readiness.

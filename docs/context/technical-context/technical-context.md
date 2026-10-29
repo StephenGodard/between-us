@@ -1,9 +1,13 @@
 # Technical context — short-lived listening between citizens
 
-Date: 2026-10-24
+Date: 2026-10-25
 Functional sources: `docs/context/product-context/discovery/entre-nous-product-discovery.md`, `docs/context/product-context/briefs/espaces-ecoute-ephemeres.md`, and `docs/context/product-context/intake/espaces-ecoute-ephemeres.md` (especially A-20 to A-23 for frontend/backend, skill order and two-device LAN scope; A-30 to A-36 for subject-led entry, optional voice, server-held sessions and a separate backend service). These are living context and cited user decisions, not approval gates.
-PRD: The [initial product PRD](../../prds/entre-nous-initial.md) had an approved baseline and now has an A-32 to A-36 revision ready for review, with reviewable demo features; it is not an accepted scoped implementation PRD.
-Implementation readiness: ADR 0001 is approved for the fictional demo architecture. A scoped delivery PRD, detailed protocol and disconnect rules, secure LAN access, audio verification and executable checks remain before claiming a build baseline.
+PRD: The [initial product PRD](../../prds/entre-nous-initial.md), its current A-32 to A-36 revision, the three demo features, and both [lot 1](../../prds/build-in-public-video-lot-1.md) and [lot 2](../../prds/interactive-session-mvp.md) scoped PRDs are approved following the owner's explicit 25 October 2026 decisions (A-40 for the scoped PRDs).
+Implementation readiness: ADR 0001 is approved for the fictional demo architecture. The scoped PRDs are approved; detailed protocol and disconnect rules, secure LAN access, audio verification and executable checks remain before claiming a build baseline.
+
+## Current implementation evidence — 25 October 2026
+
+The selected Nuxt frontend, ASP.NET Core 10/SignalR backend, Compose packaging and Caddy HTTPS gateway now exist. Explicit subject creation/choice, reciprocal chat, A-42 optional audio invitation flow, opener closure and joiner departure are implemented. Backend build, formatting and five SignalR integration tests pass; frontend type/build/format checks pass. Compose and three isolated Chromium contexts also passed the chat and synthetic-media lifecycle smoke checks; certificate trust was bypassed in automation. See the [implementation contract](implementation-contract.md), [runbook](../../local-demo-runbook.md) and individual plan progress. Physical two-phone trust and audible audio remain **NOT RUN**; unexpected-disconnect expiry and recovery remain undecided. Earlier implementation-pending descriptions below preserve the architecture baseline and must not be read as current code inventory.
 
 ## Delivery scope
 
@@ -34,7 +38,7 @@ A possible later service would connect real adults in France. Its safety, identi
 - `prototype/index.html` declares a mobile viewport, and `prototype/styles.css` contains layouts for narrower screens. This is observed responsive styling; device compatibility has not been tested.
 - `prototype/README.md` records no accounts, database, remote API, or persistent conversation storage. The two tabs must run on the same device. **This cannot satisfy the owner's new two-device requirement.** These observations do not prove production privacy or deletion behaviour.
 - The active `prototype/` has no Nuxt project or cloud deployment configuration. A Nuxt application would be a new implementation or migration, not a description of the current prototype.
-- The initial product PRD's baseline was approved, and its A-32 to A-36 revision awaits review; no accepted scoped implementation PRD, deployed service or mobile client is present. ADR 0001 selects the demo architecture but has not been implemented.
+- The initial product PRD's current A-32 to A-36 revision, the three demo feature specifications, and both scoped delivery PRDs were approved on 25 October 2026; no deployed service or mobile client is present. ADR 0001 selects the demo architecture but has not been implemented.
 
 ## Candidate architecture and boundaries
 

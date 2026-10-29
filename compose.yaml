@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./src/backend
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      AllowedOrigins: https://${DEMO_HOST:-localhost}:${DEMO_PORT:-8443}
+    restart: unless-stopped
+  frontend:
+    build: ./src/frontend
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+    restart: unless-stopped
+  gateway:
+    image: caddy:2.10
+    ports:
+      - "${DEMO_PORT:-8443}:443"
+    environment:
+      DEMO_HOST: ${DEMO_HOST:-localhost}
+    volumes:
+      - ./infrastructure/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
+volumes:
+  caddy_data:
+  caddy_config:

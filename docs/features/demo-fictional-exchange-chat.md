@@ -1,9 +1,9 @@
 # Feature: Fictional exchange and two-way chat
 
 ID: F-D-01  
-Status: READY FOR REVIEW  
+Status: APPROVED
 Horizon: fictional demo  
-Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`READY FOR REVIEW` revision; D-R1, D-R4)  
+Parent PRD: [Entre nous — initial product PRD](../prds/entre-nous-initial.md) (`APPROVED`; D-R1, D-R4)
 Date: 2026-10-24
 
 ## Outcome and actors
@@ -14,7 +14,7 @@ Two fictional participants, one speaking and one listening, can enter the same s
 
 The demonstrator presents a fictional situation about grief (A-26). Following the owner-selected entry option A, one participant chooses « J'ai besoin de parler », proposes the subject and waits; another chooses « Je suis disponible pour écouter », sees the open subject and joins it (A-30 to A-32). Both can write, receive and respond freely during the active exchange; an initial intention does not assign messaging permissions or a turn order (A-28). Scripted example content may be present for the demonstration, while sending and receiving remains genuinely two-way. Participants may keep the exchange entirely in written chat and end it through [F-D-03](demo-exchange-closure.md), or use the optional call in [F-D-02](demo-audio-call.md). This feature does not define a permanent participant profile or automatic public subject matching.
 
-The exact grief story, subject input constraints, waiting and cancellation rules, connection mechanics, and how sample content is introduced are `Not provided.` Their resolution must preserve the fictional, two-party scope. Exact interface copy remains a **Hypothesis**. See the [experience context](../context/experience-context/experience-context.md) for the owner-selected warm, human atmosphere (A-25) and selected entry structure (A-32).
+The exact grief story, subject input constraints, waiting expiry, connection mechanics, and how sample content is introduced are `Not provided.` The opener's ability to cancel while waiting is confirmed by A-35 and specified in [F-D-03](demo-exchange-closure.md). Resolving the open details must preserve the fictional, two-party scope. Exact interface copy remains a **Hypothesis**. See the [experience context](../context/experience-context/experience-context.md) for the owner-selected warm, human atmosphere (A-25) and selected entry structure (A-32).
 
 ## Requirements and evidence
 
@@ -33,6 +33,15 @@ Excluded: real participants seeking support, public matching, accounts, persiste
 
 A-2 proposes topic matching and A-3 proposes comparable experience; A-8, A-10 and A-12 narrow this demo to a fictional exchange. Neither proposal becomes an automated demo requirement. A-26 selects grief from A-4's two examples, while the script remains `Not provided.` A-28 clarifies that the exchange must remain reciprocal regardless of any “aidant” label. A-30 and A-31 propose a first screen where one person opens a subject and waits while another chooses it from open subjects; A-32 confirms this as the entry direction after reviewing the [subject-led UX mockup](../context/experience-context/subject-entry-flow.md). This does not approve public subject discovery or matching for a real service. A-32 also makes voice optional within each exchange. A-11's “on est tous aidants” informs the presentation, while exact interface wording is `Not provided.` The secure two-device access and connection behaviour mentioned in technical context require design and verification, not a product decision here.
 
+**Post-approval clarification (A-37):** the owner wants a hands-on mini-prototype. The participants choose the entry, write and send messages, choose whether to call, and take the relevant end actions themselves. Fictional example content can frame the exchange but must not auto-run its actions or messages. The scripted sequence belongs to the separate video (D-R5).
+
+## Derived user stories
+
+- [US-D-07 — Access the local demo from two devices](../user-stories/demo-local-two-service-access.md) covers the access prerequisite from scoped PRD M-R7.
+- [US-D-08 — Share and protect temporary subject sessions](../user-stories/demo-shared-session-foundation.md) covers shared subject state and admission under scoped PRD M-R1/M-R2; A-38 supersedes this feature's single-example application wording for the new scoped delivery.
+- [US-D-01 — Open and join a fictional subject](../user-stories/demo-open-and-join-subject.md) covers subject-led entry and waiting.
+- [US-D-02 — Hold a reciprocal fictional chat](../user-stories/demo-reciprocal-chat.md) covers two-way messaging and D-R4's active-message boundary.
+
 ## Review record
 
-Checked the parent PRD, discovery, BA brief, cited intake A-2 to A-4, A-8, A-10 to A-13, A-22 and A-23, and current technical context on 24 October 2026. **NOT RUN:** simultaneous LAN-device chat or storage/log inspection; the selected implementation is not present. Feature approval: `Not provided.` The owner's approval of the parent PRD does not approve this feature.
+Checked the parent PRD, discovery, BA brief, cited intake A-2 to A-4, A-8, A-10 to A-13, A-22, A-23, A-28, A-30 to A-32 and A-35 to A-36, and current technical context; reconciled the cancellation boundary on 25 October 2026. **NOT RUN:** simultaneous LAN-device chat or storage/log inspection; the selected implementation is not present. **Approval:** the owner explicitly approved the demo features in the current conversation on 25 October 2026. This does not establish implementation readiness.

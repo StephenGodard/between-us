@@ -15,7 +15,7 @@ The proposed service is a space for **citizens to listen to one another**, initi
 
 **Origin of the idea:** The project owner has seen isolated people struggle with difficult emotions and observed that listening to them could help them move forward (A-1). They believe some people keep their difficulties to themselves because they hesitate to approach a psychologist or another healthcare professional (A-1, A-6). These observations motivate the idea; they do not establish that a platform would have the same effect.
 
-**Confirmed hackathon scope:** A locally testable mini-prototype with two fictional participants on distinct devices sharing one LAN, sample conversations, two-way chat and an optional real audio-call capability, plus a scripted two-minute video. A participant may finish an exchange in written chat without calling (A-32). The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13, A-22, A-23; kickoff video requirement).
+**Confirmed hackathon scope and order:** Lot 1 is a scripted, chat-centered video for Build in Public and rapid product presentation, with no audio-call scene (A-39, A-41); lot 2, to follow quickly, is a locally testable interactive micro-application with server-held sessions and user-entered conversation subjects. A second client chooses an open session by its subject; the two fictional participants on distinct LAN devices can chat both ways and optionally use real audio. The application does not run a scripted scenario (A-37, A-38). The video has a two-minute submission constraint (A-9; kickoff). The demonstration includes no real people seeking support, saved conversations or real emergency response (A-8 to A-13, A-22, A-23).
 
 ## Who it is for 👤
 
@@ -43,7 +43,7 @@ The intended audience for a possible future service is **adults in France** (A-7
 
 **Desired change:** Enable a socially isolated person to begin speaking about a difficult experience with another citizen, feel heard without judgment and, if wanted, receive relevant lived experience (A-1, A-3, A-4, A-6). The project aims to contribute to mental well-being, but that effect has not been measured (A-3, A-6).
 
-**Demonstration objective:** Make the sequence understandable and testable: “I choose to talk or listen → one person opens a subject, another joins → both exchange messages → they may call or remain in chat → the session ends and disappears from both participants' views.” The video starts with in-person listening and moves to a remote exchange in the application; the prototype lets people try the same principle locally (A-9 to A-13, A-30 to A-32).
+**Demonstration objective:** Make the sequence understandable and testable: “I choose to talk or listen → one person opens a subject, another joins → both exchange messages → the session ends and disappears from both participants' views.” The video starts with in-person listening and moves to a fictional remote written exchange (A-9, A-41). The lot 2 application lets people try the interaction locally and optionally call (A-12, A-13, A-30 to A-32, A-41).
 
 ## Problems to address
 
@@ -81,7 +81,7 @@ A person should be able to say whether they want to **talk** or are **available 
 
 ### Choose a subject and find relevant listening
 
-For the fictional demo, the person who needs to talk opens a subject and waits; someone available to listen sees and chooses that open subject (A-30 to A-32). Grief is the main demo example (A-26). For a possible real service, matching by subject and comparable experience still needs definition and validation (A-2 to A-4); public discovery is not approved by the demo decision.
+For the fictional demo, a person opens a subject of their choosing and waits in a server-held session; another person sees open sessions and chooses the subject they want to discuss (A-30 to A-33, A-38). Grief remains an example for the video (A-26), not the application's only subject. For a possible real service, public access and matching by comparable experience still need definition and validation (A-2 to A-4); the local MVP does not authorize real-person use.
 
 ### Begin, continue and end an exchange
 
@@ -93,9 +93,9 @@ A participant should be able to report a hurtful message; human review and admin
 
 ## Hackathon journey and MVP
 
-**Demonstrated journey:** A fictional person experiences grief → chooses to talk and opens a subject → another chooses to listen and joins it → both exchange messages → they may continue in written chat or start a local audio call → ending the chat or call closes the session and removes the exchange from both views (A-3, A-4, A-9 to A-13, A-26, A-28, A-30 to A-32). The owner chooses a warm, human interface atmosphere (A-25); exact visual treatment remains open in the [experience context](../../experience-context/experience-context.md).
+**Application journey:** A fictional participant enters a subject and opens a server-held session → another chooses that subject among open sessions → both type and exchange messages → they may remain in chat or use live audio → the opener intentionally closes the session, or the joiner leaves and the subject returns to waiting (A-28, A-30 to A-38). The application contains no scripted playback. The video may use grief as its scripted example (A-9, A-26). The owner chooses a warm, human interface atmosphere (A-25); exact visual treatment remains open in the [experience context](../../experience-context/experience-context.md).
 
-**Confirmed deliverables:** A locally testable prototype with two fictional participants, chat, sample conversations and an optional real audio-call capability; and a scripted **two-minute** submission video (A-8 to A-13, A-32; `docs/context/hackathon-kickoff.md`). Code created in `prototype/` before this discovery is **exploratory**; its existence does not validate the detailed journey or the future service.
+**Confirmed deliverables in order:** Lot 1 is a scripted, chat-centered **two-minute** video for Build in Public and rapid product presentation; it excludes an audio-call scene (A-41). Lot 2 follows quickly with a locally testable interactive micro-application: user-created subject sessions, reciprocal chat and an optional real audio-call capability (A-8 to A-13, A-32, A-37 to A-41; `docs/context/hackathon-kickoff.md`). Lot 1 can illustrate the intended application before it works; that illustration is not technical validation. Code created in `prototype/` before this discovery is **exploratory**; its existence does not validate the detailed journey or the future service.
 
 **Outside the demo:** Conversations with real people seeking help, public matching, accounts, archived exchanges, operational moderation, emergency calls and proof of improved well-being. Prototype data remains local and is not stored in a conversation history (A-8, A-10 to A-13).
 

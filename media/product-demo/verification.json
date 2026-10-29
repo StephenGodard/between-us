@@ -1,0 +1,11 @@
+{
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 25.0,
+  "duration": 120.0,
+  "decodedFrames": 3000,
+  "sampledFrames": 14,
+  "audioCodec": null
+}

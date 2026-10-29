@@ -2,7 +2,7 @@
 # AGENTS.md and the active SKILL.md files give the operative instructions.
 framework:
   name: product-discovery-scaffold
-  phase: ba-po-architecture
+  phase: ba-po-us-planning-development-design-architecture
   product_context: docs/context/product-context/product-context.md
 paths:
   agents: .agents/agents
@@ -11,8 +11,10 @@ paths:
   templates: .agents/templates
   checklists: .agents/checklists
   functional_context: docs/context/product-context
+  design_context: docs/context/design-context/design-context.md
   technical_context: docs/context/technical-context/technical-context.md
   project_docs: docs
+  implementation_plans: docs/implementation-plans
   implementation: src
   tests: tests
   tools: tools
